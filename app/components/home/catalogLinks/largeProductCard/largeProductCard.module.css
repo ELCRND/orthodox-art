@@ -1,0 +1,25 @@
+.container {
+  grid-area: largeCard;
+  padding: 32px 40px;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.container img {
+  align-self: center;
+}
+.container a {
+  max-width: 295px;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 127%;
+  color: #000;
+}
+.container b {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  color: #000;
+}

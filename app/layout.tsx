@@ -1,16 +1,31 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import Header from "./components/header/Header";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const Montserrat = localFont({
+  src: [
+    {
+      path: "./fonts/Montserrat-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Montserrat-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Montserrat-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Montserrat-SemiBold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -24,8 +39,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="ru">
+      <body className={`${Montserrat.className}`}>
+        <Header />
         {children}
       </body>
     </html>

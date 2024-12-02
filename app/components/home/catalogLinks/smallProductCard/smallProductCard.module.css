@@ -1,0 +1,4 @@
+.container {
+  grid-area: smallCard;
+  background-color: var(--grey);
+}

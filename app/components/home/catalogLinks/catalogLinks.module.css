@@ -1,0 +1,12 @@
+.container {
+  min-height: 1045px;
+  padding: 60px;
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(268px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+  grid-template-areas:
+    "largeCard largeCard crosses bracelets pendants"
+    "largeCard largeCard slider slider pendants"
+    "chains chains slider slider smallCard";
+  gap: 32px;
+}
