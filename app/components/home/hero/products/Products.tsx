@@ -11,6 +11,7 @@ const Products = forwardRef((_, ref: LegacyRef<HTMLDivElement> | undefined) => {
         src={"/main/hero/home-bg-right.jpg"}
         alt="Products"
         fill={true}
+        sizes="100%"
         draggable={false}
         className={styles.bg}
       />

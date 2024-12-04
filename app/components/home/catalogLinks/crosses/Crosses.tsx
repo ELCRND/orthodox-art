@@ -6,7 +6,12 @@ const Crosses = () => {
   return (
     <Link href={"/catalog#crosses"} className={styles.container}>
       <span>Кресты</span>
-      <Image src={"/main/catalog/crosss.png"} alt="cross" fill={true} />
+      <Image
+        src={"/main/catalog/crosss.png"}
+        alt="cross"
+        fill={true}
+        sizes="100%"
+      />
     </Link>
   );
 };

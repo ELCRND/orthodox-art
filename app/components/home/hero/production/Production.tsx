@@ -12,6 +12,7 @@ const Production = forwardRef(
           src={"/main/hero/home-bg-left.png"}
           alt="Production"
           fill={true}
+          sizes="100%"
           draggable={false}
           className={styles.bg}
         />

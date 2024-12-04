@@ -10,3 +10,41 @@
     "chains chains slider slider smallCard";
   gap: 32px;
 }
+
+@media screen and (max-width: 1599px) {
+  .container {
+    min-height: 845px;
+    grid-template-rows: repeat(auto-fit, 222px);
+    grid-template-columns: repeat(auto-fit, minmax(222px, 1fr));
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .container {
+    min-height: 1045px;
+    grid-template-rows: repeat(auto-fit, minmax(268px, 1fr));
+    grid-template-areas:
+      "largeCard largeCard pendants"
+      "largeCard largeCard pendants"
+      "crosses slider slider"
+      "bracelets slider slider"
+      "chains chains smallCard";
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    min-height: 1345px;
+    padding: 50px 15px;
+    grid-template-rows: repeat(auto-fit, 136px);
+    grid-template-areas:
+      "largeCard"
+      "largeCard"
+      "slider"
+      "slider"
+      "crosses"
+      "bracelets"
+      "pendants"
+      "chains";
+  }
+}

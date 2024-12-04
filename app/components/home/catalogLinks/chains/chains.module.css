@@ -38,3 +38,13 @@
   translate: 0 -100%;
   opacity: 0;
 }
+
+@media screen and (max-width: 767px) {
+  .container:hover img {
+    translate: 0 150%;
+  }
+  .container:hover span {
+    translate: 0 0;
+    opacity: 1;
+  }
+}

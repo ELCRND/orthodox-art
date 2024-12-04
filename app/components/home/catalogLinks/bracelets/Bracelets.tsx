@@ -6,7 +6,12 @@ const Bracelets = () => {
   return (
     <Link href={"/catalog#bracelets"} className={styles.container}>
       <span>Браслеты</span>
-      <Image src={"/main/catalog/bracelets.jpg"} alt="bracelets" fill={true} />
+      <Image
+        src={"/main/catalog/bracelets.jpg"}
+        alt="bracelets"
+        fill={true}
+        sizes="100%"
+      />
     </Link>
   );
 };

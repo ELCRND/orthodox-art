@@ -1,0 +1,92 @@
+.container {
+  padding-left: 60px;
+  padding-right: 60px;
+  max-height: 706px;
+  overflow: hidden;
+  position: relative;
+}
+
+.container ul {
+  max-height: 706px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.container li.active {
+  animation: active 1000ms linear;
+}
+
+.indacators {
+  position: absolute;
+  top: 50%;
+  right: 85px;
+  translate: 0 -50%;
+  z-index: 11;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: flex-end;
+}
+
+.indacators span {
+  width: 20px;
+  height: 3px;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: all 500ms ease;
+}
+
+.indacators span.active {
+  width: 48px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+@keyframes active {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .container {
+    max-height: 676px;
+  }
+
+  .container ul {
+    max-height: 676px;
+  }
+
+  .indacators {
+    top: 50px;
+    translate: 0 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    max-height: 620px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .container ul {
+    max-height: 620px;
+  }
+
+  .indacators {
+    right: 40px;
+    gap: 20px;
+  }
+
+  .indacators span.active {
+    width: 38px;
+  }
+}

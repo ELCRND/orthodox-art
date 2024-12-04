@@ -1,11 +1,12 @@
 import Bracelets from "./bracelets/Bracelets";
-import styles from "./catalogLinks.module.css";
 import Chains from "./chains/Chains";
 import Crosses from "./crosses/Crosses";
 import LargeProductCard from "./largeProductCard/LargeProductCard";
 import Pendants from "./pendants/Pendants";
 import Slider from "./slider/Slider";
 import SmallProductCard from "./smallProductCard/SmallProductCard";
+
+import styles from "./catalogLinks.module.css";
 
 const CatalogLinks = () => {
   return (

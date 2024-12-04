@@ -1,6 +1,6 @@
 .container {
   grid-area: pendants;
-  background-color: var(--grey-light);
+  background-color: var(--white);
   border-radius: 2px;
   position: relative;
   overflow: hidden;
@@ -38,4 +38,14 @@
 .container:hover span {
   translate: -100% 0;
   opacity: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .container:hover img {
+    translate: 150% 0;
+  }
+  .container:hover span {
+    translate: 0 0;
+    opacity: 1;
+  }
 }

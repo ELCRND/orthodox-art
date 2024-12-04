@@ -1,4 +1,69 @@
 .container {
   grid-area: slider;
-  background-color: var(--grey);
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.container ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  list-style-type: none;
+  overflow: visible;
+}
+
+.container ul.move {
+  animation: move 500ms linear;
+}
+
+.container ul.quick {
+  transition: none;
+}
+.container ul.smooth {
+  transition: translate 500ms ease;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.container li {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  position: relative;
+}
+
+.indacators {
+  display: flex;
+  gap: 12px;
+  position: absolute;
+  bottom: 25px;
+  right: 30px;
+}
+
+.indacators span {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: #fff;
+}
+
+.indacators span.active {
+  background-color: transparent;
+}
+
+@keyframes move {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
