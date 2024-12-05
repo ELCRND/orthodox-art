@@ -1,0 +1,136 @@
+.container {
+  padding: 70px 110px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  display: grid;
+}
+
+.container h2 {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  max-width: 400px;
+  margin-bottom: 28px;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 158%;
+  color: #000;
+}
+
+.container span {
+  grid-row: 2 / 3;
+  grid-column: 1 / 2;
+  font-size: 16px;
+  line-height: 150%;
+  color: #999;
+}
+
+.container form {
+  grid-row: 1 / 3;
+  grid-column: 2 / 3;
+  align-self: center;
+}
+
+.container form input {
+  min-width: 450px;
+  margin-bottom: 32px;
+  padding-bottom: 5px;
+  border: none;
+  border-bottom: 2px solid var(--beige);
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.container form input::placeholder {
+  color: #999;
+}
+
+.container form input:focus {
+  outline: none;
+}
+
+.container form button {
+  width: 188px;
+  height: 48px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 171%;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--dark);
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+
+.container form button:hover {
+  opacity: 0.7;
+}
+.container form button:active {
+  opacity: 1;
+}
+
+@media screen and (max-width: 1599px) {
+  .container {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media screen and (max-width: 1079px) {
+  .container {
+    column-gap: 50px;
+  }
+
+  .container form input {
+    min-width: 250px;
+  }
+}
+
+@media screen and (max-width: 1079px) {
+  .container {
+    margin-left: 15px;
+    margin-right: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    justify-items: center;
+    column-gap: 0;
+    padding: 30px 18px 38px 18px;
+  }
+
+  .container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 132%;
+  }
+
+  .container span {
+    font-size: 14px;
+    line-height: 171%;
+    text-align: center;
+    color: rgba(8, 8, 8, 0.4);
+  }
+
+  .container form {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+    margin-top: 58px;
+  }
+  .container form input {
+    margin-bottom: 54px;
+  }
+  .container form button {
+    width: 253px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #000;
+    color: #f7f7f7;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 171%;
+  }
+}

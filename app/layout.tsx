@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { ToastContainer, Zoom } from "react-toastify";
 import Header from "./components/header/Header";
+
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const Montserrat = localFont({
   src: [
@@ -43,6 +46,17 @@ export default function RootLayout({
       <body className={`${Montserrat.className}`}>
         <Header />
         {children}
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          draggable
+          theme="dark"
+          transition={Zoom}
+        />
       </body>
     </html>
   );

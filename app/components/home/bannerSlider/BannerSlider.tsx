@@ -1,5 +1,5 @@
 "use client";
-import { useSlider } from "@/app/utils/useSlider";
+import { useSlider } from "@/app/hooks/useSlider";
 import BannerSlide from "./bannerSlide/BannerSlide";
 
 import styles from "./bannerSlider.module.css";

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useSlider } from "@/app/utils/useSlider";
+import { useSlider } from "@/app/hooks/useSlider";
 
 import styles from "./slider.module.css";
 
