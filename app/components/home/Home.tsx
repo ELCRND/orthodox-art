@@ -4,6 +4,7 @@ import BannerSlider from "./bannerSlider/BannerSlider";
 import AboutMaster from "./aboutMaster/AboutMaster";
 import Feedback from "./feedback/Feedback";
 import Contacts from "./contacts/Contacts";
+import Life from "./life/Life";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <AboutMaster />
       <Feedback />
       <Contacts />
+      <Life />
     </div>
   );
 };

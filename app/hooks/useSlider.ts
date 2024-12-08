@@ -1,38 +1,47 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-export function useSlider(axis: "x" | "y", time: number, transition: number) {
-  const slider = useRef<any>(null);
-  // const [isLast, setIsLast] = useState(false);
-  const [indicatorNum, setIndacatorNum] = useState(0);
+export function useSlider(
+  quantSlides: number,
+  autoSlideInterval?: number,
+  timeoutAutoSlideInterval?: number
+) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoSliding, setIsAutoSliding] = useState(true);
+  const timeoutAutoSlideIntervalId = useRef<ReturnType<typeof setTimeout>>();
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % quantSlides);
+  }, [quantSlides]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + quantSlides) % quantSlides);
+  }, [quantSlides]);
 
   useEffect(() => {
-    let slideNum = 0;
-    let timer = setInterval(() => {
-      if (slider.current) {
-        if (slideNum === slider.current?.childNodes.length - 1) {
-          slider.current.style.transition = "none";
-          slideNum = 0;
-          setIndacatorNum(0);
-          // setIsLast(true);
-        } else {
-          slider.current.style.transition = `translate ${transition}ms ease`;
-          slideNum += 1;
-          setIndacatorNum((p) => (p += 1));
-          // setIsLast(false);
-        }
+    if (!isAutoSliding || !autoSlideInterval) return;
 
-        axis === "x"
-          ? (slider.current.style.translate = `-${
-              (slider.current?.offsetWidth || 0) * slideNum
-            }px 0`)
-          : (slider.current.style.translate = `0 -${
-              (slider.current?.offsetHeight || 0) * slideNum
-            }px`);
-      }
-    }, time);
+    const intervalId = setInterval(nextSlide, autoSlideInterval);
+    return () => clearInterval(intervalId);
+  }, [isAutoSliding, nextSlide, autoSlideInterval]);
 
-    return () => clearInterval(timer);
-  }, []);
+  const toggleAutoSlide = () => {
+    setIsAutoSliding((prev) => !prev);
+  };
 
-  return { ref: slider, indicatorNum };
+  const setSlideIndex = (n: number) => {
+    setIsAutoSliding(false);
+    setCurrentIndex(n);
+    clearTimeout(timeoutAutoSlideIntervalId.current);
+    timeoutAutoSlideIntervalId.current = setTimeout(
+      () => setIsAutoSliding(true),
+      timeoutAutoSlideInterval
+    );
+  };
+
+  return {
+    slideIdex: currentIndex,
+    setSlideIndex,
+    toPrev: prevSlide,
+    toNext: nextSlide,
+  };
 }

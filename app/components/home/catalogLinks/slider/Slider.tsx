@@ -5,11 +5,16 @@ import { useSlider } from "@/app/hooks/useSlider";
 import styles from "./slider.module.css";
 
 const Slider = () => {
-  const { ref, indicatorNum } = useSlider("x", 2000, 500);
+  const { slideIdex, setSlideIndex } = useSlider(3, 2000, 8000);
 
   return (
     <div className={styles.container}>
-      <ul ref={ref} className={styles.container}>
+      <ul
+        style={{
+          translate: `-${slideIdex * 100}% 0`,
+          transition: `${slideIdex ? "translate 600ms ease" : "none"}`,
+        }}
+      >
         <li>
           <Image
             src={"/main/catalog/slider-1.jpg"}
@@ -37,10 +42,11 @@ const Slider = () => {
       </ul>
       <div className={styles.indacators}>
         {[0, 0, 0].map((_, idx) => (
-          <span
+          <button
+            onClick={() => setSlideIndex(idx)}
             key={idx}
-            className={`${indicatorNum == idx && styles.active}`}
-          ></span>
+            className={`${slideIdex === idx && styles.active}`}
+          ></button>
         ))}
       </div>
     </div>

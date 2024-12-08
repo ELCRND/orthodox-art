@@ -1,4 +1,5 @@
 "use client";
+// import { useSlider } from "@/app/hooks/useSlider";
 import { useSlider } from "@/app/hooks/useSlider";
 import BannerSlide from "./bannerSlide/BannerSlide";
 
@@ -36,14 +37,19 @@ const data = [
 ];
 
 const BannerSlider = () => {
-  const { ref, indicatorNum } = useSlider("y", 8000, 2000);
+  const { slideIdex, setSlideIndex } = useSlider(4, 8000, 7000);
   return (
     <div className={styles.container}>
-      <ul ref={ref}>
+      <ul
+        style={{
+          translate: `0 -${slideIdex * 100}%`,
+          transition: `${slideIdex ? "translate 600ms ease" : "none"}`,
+        }}
+      >
         {data.map((product) => (
           <li
             key={product.id}
-            className={`${indicatorNum + 1 === product.id && styles.active}`}
+            className={`${slideIdex + 1 === product.id && styles.active}`}
           >
             <BannerSlide {...product} />
           </li>
@@ -52,10 +58,11 @@ const BannerSlider = () => {
 
       <div className={styles.indacators}>
         {[0, 0, 0, 0].map((_, idx) => (
-          <span
+          <button
             key={idx}
-            className={`${indicatorNum == idx && styles.active}`}
-          ></span>
+            className={`${slideIdex === idx && styles.active}`}
+            onClick={() => setSlideIndex(idx)}
+          ></button>
         ))}
       </div>
     </div>

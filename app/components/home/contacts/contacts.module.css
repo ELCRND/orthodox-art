@@ -56,7 +56,6 @@
 
 .map {
   grid-column: 2 / 3;
-  align-self: end;
   filter: grayscale(1);
   transition: filter 600ms ease;
 }

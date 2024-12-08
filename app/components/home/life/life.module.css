@@ -1,0 +1,75 @@
+.container {
+  display: flex;
+  overflow: hidden;
+}
+
+.wrapper {
+  min-width: 510px;
+  padding-top: 60px;
+  padding-left: 110px;
+  background-color: #f6f6f6;
+}
+
+.wrapper h2 {
+  margin-bottom: 100px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 115%;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.navigation {
+  display: flex;
+  gap: 26px;
+}
+
+.navigation button {
+  width: 55px;
+  height: 55px;
+  border: 2px solid #000;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.navigation button:active {
+  background-color: var(--white);
+}
+
+.navigation button:disabled,
+.navigation button:disabled::before {
+  border-color: #ccc;
+}
+
+.navigation button::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -30% -50%;
+  rotate: -45deg;
+}
+
+.navigation button:last-of-type:before {
+  translate: -70% -50%;
+  rotate: 135deg;
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slider ol {
+  display: flex;
+  list-style-type: none;
+}

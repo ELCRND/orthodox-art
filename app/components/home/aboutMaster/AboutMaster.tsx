@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 
 const AboutMaster = () => {
   const [state, setState] = useState(0);
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -18,7 +18,7 @@ const AboutMaster = () => {
     });
 
     if (ref.current) {
-      ref.current.childNodes.forEach((el: Element) => observer.observe(el));
+      ref.current.childNodes.forEach((el) => observer.observe(el as Element));
     }
 
     return () => {

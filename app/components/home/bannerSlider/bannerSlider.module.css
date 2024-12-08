@@ -30,15 +30,32 @@
   align-items: flex-end;
 }
 
-.indacators span {
+.indacators button {
   width: 20px;
   height: 3px;
   display: block;
   background-color: rgba(255, 255, 255, 0.6);
   transition: all 500ms ease;
+  border: none;
+  position: relative;
 }
 
-.indacators span.active {
+.indacators button::before {
+  content: "";
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  /* background-color: red; */
+}
+
+.indacators button:hover {
+  cursor: pointer;
+}
+
+.indacators button.active {
   width: 48px;
   background-color: rgba(255, 255, 255, 1);
 }

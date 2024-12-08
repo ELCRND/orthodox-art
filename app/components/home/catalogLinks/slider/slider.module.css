@@ -13,17 +13,6 @@
   overflow: visible;
 }
 
-.container ul.move {
-  animation: move 500ms linear;
-}
-
-.container ul.quick {
-  transition: none;
-}
-.container ul.smooth {
-  transition: translate 500ms ease;
-}
-
 .container::-webkit-scrollbar {
   display: none;
 }
@@ -44,7 +33,7 @@
   right: 30px;
 }
 
-.indacators span {
+.indacators button {
   width: 13px;
   height: 13px;
   border-radius: 50%;
@@ -52,18 +41,10 @@
   background-color: #fff;
 }
 
-.indacators span.active {
-  background-color: transparent;
+.indacators button:hover {
+  cursor: pointer;
 }
 
-@keyframes move {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.indacators button.active {
+  background-color: transparent;
 }
