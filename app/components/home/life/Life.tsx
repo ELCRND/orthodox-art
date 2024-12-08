@@ -2,24 +2,47 @@
 import { useSlider } from "@/app/hooks/useSlider";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import styles from "./life.module.css";
 import Video from "./video/Video";
 
+import styles from "./life.module.css";
+
 const Life = () => {
-  const { slideIdex, toPrev, toNext } = useSlider(6);
+  // const [isAutoPlay,setIsAutoPlay] =  useState(false)
+  const [isWindowWide, setIsWindowWide] = useState<boolean | null>(true);
+  const { slideIdex, toPrev, toNext, setSlideIndex, toggleAutoSlide } =
+    useSlider(6, isWindowWide ? 5000 : 0, 5000);
   const [isLast, setIsLast] = useState(false);
   const ref = useRef<any>(null);
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      console.log(entry);
-      entry.isIntersecting ? setIsLast(true) : setIsLast(false);
-    },
-    { threshold: 1.0 }
-  );
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        entry.isIntersecting ? setIsLast(true) : setIsLast(false);
+      },
+      { threshold: 1.0 }
+    );
     observer.observe(ref.current.lastChild);
-    return () => observer.unobserve(ref.current.lastChild);
+    return () => observer.unobserve(ref.current?.lastChild);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsWindowWide(window.innerWidth < 768);
+    };
+
+    if (typeof window !== "undefined") {
+      handleResize();
+
+      window.addEventListener("onload", handleResize);
+      window.addEventListener("resize", handleResize);
+    }
+
+    return () => {
+      if (typeof window !== "undefined") {
+        window.removeEventListener("onload", handleResize);
+        window.removeEventListener("resize", handleResize);
+      }
+    };
   }, []);
 
   return (
@@ -62,7 +85,7 @@ const Life = () => {
             />
           </li>
           <li>
-            <Video />
+            <Video toggleAutoSlide={toggleAutoSlide} />
           </li>
           <li>
             <Image
@@ -97,6 +120,15 @@ const Life = () => {
             />
           </li>
         </ol>
+      </div>
+      <div className={styles.pagination}>
+        {[0, 0, 0, 0, 0, 0].map((_, idx) => (
+          <button
+            key={idx}
+            className={`${slideIdex === idx ? styles.active : ""}`}
+            onClick={() => setSlideIndex(idx)}
+          ></button>
+        ))}
       </div>
     </div>
   );

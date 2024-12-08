@@ -3,28 +3,41 @@
 import { useRef, useState } from "react";
 import styles from "./video.module.css";
 
-const Video = () => {
+const Video = ({
+  toggleAutoSlide,
+}: {
+  toggleAutoSlide: (() => void) | ((v: boolean) => void);
+}) => {
   const [isPlay, setIsPlay] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
-  const handleClick = () => {
-    if (ref.current && !isPlay) {
-      ref.current.play();
-      setIsPlay(true);
-      return;
-    }
 
-    ref.current?.pause();
-    setIsPlay(false);
+  const handlePlay = () => {
+    ref.current?.play();
+    setIsPlay(true);
+    toggleAutoSlide(false);
   };
+
+  const handlePause = () => {
+    setIsPlay(false);
+    toggleAutoSlide(true);
+  };
+
   return (
     <div className={styles.container}>
-      <video width={320} height={310} ref={ref} controls={isPlay}>
+      <video
+        width={320}
+        height={310}
+        ref={ref}
+        controls={isPlay}
+        onPause={handlePause}
+        onPlay={() => setIsPlay(true)}
+      >
         <source src={"/main/life/life-2.mp4"} type="video/mp4" />
       </video>
       <button
         type="button"
-        onClick={handleClick}
         className={`${isPlay && styles.hidden}`}
+        onClick={handlePlay}
       >
         <svg
           width="17"

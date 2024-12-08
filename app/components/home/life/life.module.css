@@ -73,3 +73,53 @@
   display: flex;
   list-style-type: none;
 }
+
+.pagination {
+  display: none;
+}
+
+@media screen and (max-width: 1279px) {
+  .wrapper {
+    min-width: 320px;
+    padding-left: 60px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding-bottom: 60px;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .wrapper {
+    padding-top: 0;
+    padding-left: 15px;
+    background-color: transparent;
+  }
+
+  .wrapper h2 {
+    margin-bottom: 0;
+  }
+
+  .wrapper button {
+    display: none;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .pagination button {
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--dark);
+    border-radius: 50%;
+    background-color: var(--dark);
+  }
+
+  .pagination button.active {
+    background-color: transparent;
+  }
+}

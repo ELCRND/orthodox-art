@@ -11,7 +11,6 @@ import { useEffect, useRef, useState } from "react";
 const AboutMaster = () => {
   const [state, setState] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) setState(+entry.target.id);

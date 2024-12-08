@@ -24,18 +24,21 @@ export function useSlider(
     return () => clearInterval(intervalId);
   }, [isAutoSliding, nextSlide, autoSlideInterval]);
 
-  const toggleAutoSlide = () => {
-    setIsAutoSliding((prev) => !prev);
+  const toggleAutoSlide = (v?: boolean) => {
+    v ? setIsAutoSliding(v) : setIsAutoSliding((prev) => !prev);
   };
 
   const setSlideIndex = (n: number) => {
     setIsAutoSliding(false);
     setCurrentIndex(n);
-    clearTimeout(timeoutAutoSlideIntervalId.current);
-    timeoutAutoSlideIntervalId.current = setTimeout(
-      () => setIsAutoSliding(true),
-      timeoutAutoSlideInterval
-    );
+
+    if (timeoutAutoSlideInterval) {
+      clearTimeout(timeoutAutoSlideIntervalId.current);
+      timeoutAutoSlideIntervalId.current = setTimeout(
+        () => setIsAutoSliding(true),
+        timeoutAutoSlideInterval
+      );
+    }
   };
 
   return {
@@ -43,5 +46,6 @@ export function useSlider(
     setSlideIndex,
     toPrev: prevSlide,
     toNext: nextSlide,
+    toggleAutoSlide,
   };
 }

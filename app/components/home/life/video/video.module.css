@@ -6,6 +6,11 @@
   object-fit: fill;
 }
 
+.container video:playing {
+  outline: 2px solid red;
+  display: none;
+}
+
 .container button {
   width: 72px;
   height: 72px;
