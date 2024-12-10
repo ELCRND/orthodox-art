@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style-type: none;
+}
+
+.container a {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 243%;
+  color: #000;
+  transition: opacity 300ms ease;
+}
+
+.container a:hover {
+  opacity: 0.7;
+}
+
+.container a:active {
+  opacity: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    gap: 12px;
+  }
+
+  .container a {
+    font-size: 14px;
+  }
+}

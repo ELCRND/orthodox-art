@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ToastContainer, Zoom } from "react-toastify";
 import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -46,6 +47,7 @@ export default function RootLayout({
       <body className={`${Montserrat.className}`}>
         <Header />
         {children}
+        <Footer />
         <ToastContainer
           position="top-center"
           autoClose={3000}

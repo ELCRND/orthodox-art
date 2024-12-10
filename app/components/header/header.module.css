@@ -13,12 +13,38 @@
   width: fit-content;
 }
 
+.navigation {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container.isHome a {
+  color: #fff;
+  text-shadow: -1px 1px 0 #000;
+}
+
+.navigation a {
+  width: fit-content;
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 214%;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #000;
+  position: relative;
+  text-shadow: none;
+}
+
+.container.isHome .links {
+  color: #000;
+}
+
 .links {
   display: flex;
   align-items: center;
   gap: 50px;
   font-size: 16px;
-  color: #fff;
 }
 
 .links a {
@@ -26,6 +52,14 @@
 }
 .links a:not(:first-of-type):hover {
   scale: 1.2;
+}
+
+.container .links path {
+  fill: #050505;
+}
+
+.container.isHome .links path {
+  fill: #fff;
 }
 
 @media screen and (max-width: 1279px) {

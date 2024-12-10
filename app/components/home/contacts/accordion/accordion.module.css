@@ -1,7 +1,35 @@
 .details {
   padding-bottom: 16px;
-  border-bottom: 1px solid #000;
+  /* border-bottom: 1px solid #000; */
   cursor: pointer;
+  position: relative;
+}
+
+.details::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: var(--dark);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.details[open]::before {
+  animation: move 300ms ease forwards;
+}
+
+@keyframes move {
+  10% {
+    background-color: var(--beige);
+  }
+  /* 20% {
+    opacity: 1;
+  } */
+  100% {
+    bottom: -250%;
+    opacity: 0;
+  }
 }
 
 .details > summary {
@@ -39,21 +67,33 @@
   display: none;
 }
 
-.details[open] {
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
 .details[open] + .answerWrapper {
   grid-template-rows: 1fr;
-  border-bottom: 2px solid #ead6bd;
-  padding-bottom: 20px;
+}
+
+.details[open] + .answerWrapper::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: var(--beige);
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  opacity: 0;
+  animation: show 600ms linear forwards;
+}
+
+@keyframes show {
+  to {
+    opacity: 1;
+  }
 }
 
 .answerWrapper {
   display: grid;
   grid-template-rows: 0fr;
   transition: all 300ms ease;
+  position: relative;
 }
 
 .answerBody {

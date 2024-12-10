@@ -1,0 +1,27 @@
+.container {
+  font-size: 14px;
+  line-height: 286%;
+  text-align: right;
+  color: #7f7f7f;
+}
+
+.container a {
+  width: fit-content;
+  margin-right: 24px;
+  position: relative;
+  transition: color 200ms ease;
+}
+
+.container a::after {
+  content: "/";
+  position: absolute;
+  right: -25%;
+  font-weight: 400;
+  color: #7f7f7f;
+  pointer-events: none;
+}
+
+.container a:hover {
+  font-weight: 500;
+  color: var(--dark);
+}

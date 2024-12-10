@@ -1,0 +1,31 @@
+.container > div {
+  position: relative !important;
+}
+
+.container > div > div:last-of-type {
+  position: static !important;
+}
+
+.container > div > div:last-of-type > div:first-of-type {
+  max-width: 690px !important;
+  height: 470px !important;
+}
+
+.container > div > div:last-of-type > div:last-of-type {
+  flex-direction: row !important;
+  gap: 40px !important;
+  top: auto !important;
+  bottom: 0 !important;
+  right: auto !important;
+  left: 0;
+  translate: 0 85% !important;
+}
+
+.container > div > div:last-of-type > div:last-of-type button {
+  width: 266px;
+  height: 172px;
+}
+
+.container > div > div:first-of-type p {
+  max-width: 570px !important;
+}

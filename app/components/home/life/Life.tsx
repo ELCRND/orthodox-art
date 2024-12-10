@@ -22,7 +22,8 @@ const Life = () => {
       { threshold: 1.0 }
     );
     observer.observe(ref.current.lastChild);
-    return () => observer.unobserve(ref.current?.lastChild);
+    return () =>
+      ref.current?.lastChild && observer.unobserve(ref.current.lastChild);
   }, []);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const Life = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="life">
       <div className={styles.wrapper}>
         <h2>
           <Image

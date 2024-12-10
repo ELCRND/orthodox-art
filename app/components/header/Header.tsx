@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import CartLink from "./icons/CartLink";
@@ -7,20 +9,24 @@ import Navigation from "./navigation/Navigation";
 import MenuWrapper from "./menu/MenuWrapper";
 
 import styles from "./header.module.css";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const isHome = usePathname() === "/";
   return (
-    <header className={styles.container}>
+    <header className={`${styles.container} ${isHome ? styles.isHome : ""}`}>
       <Link href={"/"} className={styles.logo}>
         <Image
-          src={"/logo.png"}
+          src={isHome ? "/logo.png" : "/logo-black.png"}
           alt="православное искусство"
           width={234}
           height={50}
         />
       </Link>
 
-      <Navigation />
+      <div className={styles.navigation}>
+        <Navigation />
+      </div>
 
       <div className={styles.links}>
         <WhatsAppLink />

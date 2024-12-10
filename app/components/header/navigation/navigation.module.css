@@ -1,32 +1,14 @@
-.container {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .container > ul {
   display: flex;
   gap: 50px;
   list-style: none;
 }
 
-.container > ul > li > a {
-  width: fit-content;
-  display: block;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 214%;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: #fff;
-  position: relative;
-  text-shadow: -1px 1px 0 #000;
-}
-
 .container > ul > li > a:before {
   content: "";
   width: 0px;
   height: 2px;
-  background-color: var(--white);
+  background-color: var(--beige);
   position: absolute;
   bottom: 20%;
   right: 0;

@@ -1,0 +1,42 @@
+.container {
+  position: relative;
+}
+
+.mainImage {
+  max-width: 550px;
+  height: 664px;
+  position: relative;
+  box-shadow: 0 0 20px rgb(105, 105, 105);
+}
+
+.otherImages {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 15% -50%;
+}
+
+.otherImages button {
+  width: 168px;
+  height: 168px;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  box-shadow: -1px -1px 10px rgb(105, 105, 105);
+}
+
+.smooth {
+  animation: swap 400ms linear;
+}
+
+@keyframes swap {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

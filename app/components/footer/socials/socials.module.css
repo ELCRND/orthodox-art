@@ -1,0 +1,64 @@
+.container {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  list-style-type: none;
+}
+
+.container a {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 243%;
+  color: #000;
+  transition: opacity 300ms ease;
+}
+
+.container a:hover {
+  opacity: 0.7;
+}
+
+.container a:active {
+  opacity: 1;
+}
+
+.container span {
+  font-size: 14px;
+  line-height: 367%;
+  color: #999;
+}
+
+.container ul {
+  list-style-type: none;
+  display: flex;
+
+  gap: 36px;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 100%;
+    margin-top: 30px;
+    margin-left: 0;
+    padding-top: 30px;
+    gap: 12px;
+    align-items: center;
+    border-top: 1px solid var(--grey-light);
+  }
+
+  .container a {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+  }
+  .container span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 275%;
+  }
+  .container svg {
+    width: 24px;
+    height: 24px;
+  }
+}

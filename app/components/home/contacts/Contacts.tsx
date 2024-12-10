@@ -22,7 +22,7 @@ const data = [
 
 const Contacts = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="contacts">
       <div className={styles.text}>
         <h2>Контакты</h2>
         <div className={styles.wrapper}>
