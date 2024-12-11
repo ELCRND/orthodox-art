@@ -28,15 +28,18 @@
   box-shadow: -1px -1px 10px rgb(105, 105, 105);
 }
 
-.smooth {
-  animation: swap 400ms linear;
+@media screen and (max-width: 1279px) {
+  .container {
+    grid-row: 1 / 2 !important;
+  }
+  .mainImage {
+    height: 500px;
+  }
 }
 
-@keyframes swap {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+@media screen and (max-width: 1079px) {
+  .mainImage {
+    left: 50%;
+    translate: -50% 0;
   }
 }

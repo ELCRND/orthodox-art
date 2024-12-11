@@ -1,30 +1,10 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import GuaranteeIcon from "./icons/GuaranteeIcon";
-import HandmadeIcon from "./icons/HandmadeIcon";
-import UniquenessIcon from "./icons/UniquenessIcon";
+import Icons from "../../icons/Icons";
 
 import styles from "./aboutMaster.module.css";
-import { useEffect, useRef, useState } from "react";
 
 const AboutMaster = () => {
-  const [state, setState] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setState(+entry.target.id);
-    });
-
-    if (ref.current) {
-      ref.current.childNodes.forEach((el) => observer.observe(el as Element));
-    }
-
-    return () => {
-      ref.current && observer.unobserve(ref.current);
-    };
-  }, [ref.current]);
-
   return (
     <div className={styles.container}>
       <div className={styles.img}>
@@ -58,21 +38,7 @@ const AboutMaster = () => {
           />
         </svg>
       </Link>
-
-      <div ref={ref} className={styles.icons}>
-        <HandmadeIcon />
-        <UniquenessIcon />
-        <GuaranteeIcon />
-      </div>
-
-      <div className={styles.indicators}>
-        {[0, 0, 0].map((_, idx) => (
-          <span
-            key={idx}
-            className={`${idx === state && styles.active}`}
-          ></span>
-        ))}
-      </div>
+      <Icons />
     </div>
   );
 };
