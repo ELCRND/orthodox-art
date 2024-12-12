@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  gap: 32px;
+}
+
+.container label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 286%;
+  color: #999;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.container label:hover {
+  color: #000;
+}
+
+.container label input {
+  display: none;
+}
+
+.container label:has(:checked) {
+  font-weight: 600;
+  color: #000;
+}

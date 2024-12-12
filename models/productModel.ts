@@ -1,17 +1,7 @@
+import { IProduct } from "@/types/index";
 import mongoose, { Model } from "mongoose";
 
-export interface IProduct {
-  type: string;
-  name: string;
-  price: number;
-  stock: boolean;
-  isNew: boolean;
-  material: "gold" | "silver";
-  image: string;
-  size: string;
-}
-
-export interface IProductDocument extends IProduct {
+interface IProductDocument extends IProduct {
   createdAt: Date;
   updatedAt: Date;
 }
@@ -59,5 +49,7 @@ const productSchema = new mongoose.Schema<IProductDocument>(
 
 const Product: Model<IProductDocument> =
   mongoose.models?.Product || mongoose.model("Product", productSchema);
+
+module.exports.Product = Product;
 
 export default Product;

@@ -1,0 +1,38 @@
+.container {
+  margin-right: 50px;
+  padding-right: 50px;
+  display: flex;
+  gap: 32px;
+  position: relative;
+}
+
+.container::before {
+  content: "";
+  width: 2px;
+  height: 100%;
+  background-color: var(--beige);
+  position: absolute;
+  right: 0;
+}
+
+.container label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 286%;
+  color: #999;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.container label:hover {
+  color: #000;
+}
+
+.container label input {
+  display: none;
+}
+
+.container label:has(:checked) {
+  font-weight: 600;
+  color: #000;
+}

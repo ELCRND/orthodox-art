@@ -118,7 +118,7 @@ export const dataText = {
     ],
     link: {
       text: "В каталог",
-      path: "/catalog/all#crosses",
+      path: "/catalog/all?available=stock&category=crosses",
     },
   },
 
@@ -135,7 +135,7 @@ export const dataText = {
     ],
     link: {
       text: "В каталог",
-      path: "/catalog/all#pendants",
+      path: "/catalog/all?available=stock&category=pendants",
     },
   },
 
@@ -152,7 +152,7 @@ export const dataText = {
     ],
     link: {
       text: "В каталог",
-      path: "/catalog/all#bracelets",
+      path: "/catalog/all?available=stock&category=bracelets",
     },
   },
 
@@ -166,7 +166,61 @@ export const dataText = {
     ],
     link: {
       text: "В каталог",
-      path: "/catalog/all#chains",
+      path: "/catalog/all?available=stock&category=chains",
     },
+  },
+};
+
+export const filterItemsList = {
+  available: {
+    selectType: "available",
+    values: [
+      {
+        value: "stock",
+        text: "В наличии",
+      },
+      {
+        value: "order",
+        text: "На заказ",
+      },
+    ],
+  },
+  category: {
+    selectType: "category",
+    values: [
+      {
+        value: "all",
+        text: "Все",
+      },
+      {
+        value: "crosses",
+        text: "Кресты",
+      },
+      {
+        value: "pendants",
+        text: "Подвески",
+      },
+      {
+        value: "bracelets",
+        text: "Браслеты",
+      },
+      {
+        value: "chains",
+        text: " Шнуры и цепи",
+      },
+    ],
+  },
+  material: {
+    selectType: "material",
+    values: [
+      {
+        value: "gold",
+        text: "Золото",
+      },
+      {
+        value: "silver",
+        text: "Серебро",
+      },
+    ],
   },
 };
