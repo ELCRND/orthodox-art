@@ -1,9 +1,11 @@
+console.log(123);
 module.exports = {
   async up(db) {
     const products = await db
       .collection("products")
       .find()
       .toArray((_, data) => data);
+    console.log(products);
     return db.collection("photo").insertMany(
       products.map((product) => {
         return {

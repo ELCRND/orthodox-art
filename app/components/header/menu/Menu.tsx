@@ -5,21 +5,35 @@ import WhatsAppLink from "../icons/WhatsAppLink";
 
 import styles from "./menu.module.css";
 
-const Menu = ({ isOpen }: { isOpen: boolean }) => {
+const Menu = ({
+  isOpen,
+  handler,
+}: {
+  isOpen: boolean;
+  handler: () => void;
+}) => {
   return (
     <div className={`${styles.container} ${isOpen && styles.open}`}>
       <ul className={styles.navigation}>
         <li>
-          <Link href={"/about"}>Мастер</Link>
+          <Link href={"/about"} onClick={() => handler()}>
+            Мастер
+          </Link>
         </li>
         <li>
-          <Link href={"/catalog"}>Каталог</Link>
+          <Link href={"/catalog"} onClick={() => handler()}>
+            Каталог
+          </Link>
         </li>
         <li>
-          <Link href={"#life"}>Life</Link>
+          <Link href={"#life"} onClick={() => handler()}>
+            Life
+          </Link>
         </li>
         <li>
-          <Link href={"#contacts"}>Контакты</Link>
+          <Link href={"#contacts"} onClick={() => handler()}>
+            Контакты
+          </Link>
         </li>
       </ul>
 

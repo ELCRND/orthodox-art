@@ -1,5 +1,5 @@
 .container {
-  max-width: 1780px;
+  max-width: 1764px;
   height: 60px;
   margin-top: 140px;
   margin-left: auto;
@@ -7,7 +7,13 @@
   padding-left: 24px;
   padding-right: 24px;
   display: flex;
-
   align-items: center;
   background: #f2f2f2;
+  position: relative;
+}
+
+@media screen and (max-width: 1279px) {
+  .container {
+    margin-top: 180px;
+  }
 }

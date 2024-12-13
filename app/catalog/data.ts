@@ -214,6 +214,10 @@ export const filterItemsList = {
     selectType: "material",
     values: [
       {
+        value: "any",
+        text: "Все",
+      },
+      {
         value: "gold",
         text: "Золото",
       },

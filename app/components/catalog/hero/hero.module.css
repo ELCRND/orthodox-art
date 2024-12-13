@@ -14,3 +14,17 @@
   letter-spacing: 0.03em;
   color: var(--dark);
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+    margin-bottom: 32px;
+    padding-top: 88px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .container h2 {
+    font-size: 22px;
+    line-height: 125%;
+  }
+}

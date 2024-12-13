@@ -1,0 +1,71 @@
+.container button {
+  padding: 10px 20px;
+  border: none;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+.container button.open::before {
+  translate: 0 -20%;
+  rotate: 135deg;
+}
+
+.container button::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-left: 2px solid #000;
+  border-bottom: 2px solid #000;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 0 -70%;
+  rotate: -45deg;
+  transition: all 200ms ease;
+}
+
+.items {
+  max-height: 0;
+  display: grid;
+  overflow: hidden;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  translate: -11% 100%;
+  background-color: #f2f2f2;
+  text-wrap: nowrap;
+  transition: all 300ms ease;
+}
+
+.items.open {
+  max-height: 1000%;
+  border: 1px solid var(--grey-light);
+}
+
+.items input {
+  display: none;
+}
+
+.items label {
+  padding: 8px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #999;
+  cursor: pointer;
+  transition: background-color 400ms ease;
+}
+
+.items label:hover {
+  background-color: var(--beige);
+}
+
+.items label input {
+  display: none;
+}
+
+.items label:has(:checked) {
+  font-weight: 600;
+  color: #000;
+}

@@ -20,7 +20,10 @@ const Icons = () => {
     }
 
     return () => {
-      ref.current && observer.unobserve(ref.current);
+      ref.current &&
+        ref.current.childNodes.forEach((el) =>
+          observer.unobserve(el as Element)
+        );
     };
   }, [ref.current]);
   return (

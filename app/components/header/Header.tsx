@@ -1,17 +1,21 @@
 "use client";
 
+import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import CartLink from "./icons/CartLink";
 import ProfileLink from "./icons/ProfileLink";
 import WhatsAppLink from "./icons/WhatsAppLink";
 import Navigation from "./navigation/Navigation";
-import MenuWrapper from "./menu/MenuWrapper";
+import Menu from "./menu/Menu";
+import MenuBtn from "./menuBtn/MenuBtn";
 
 import styles from "./header.module.css";
-import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const [state, setState] = useState(false);
+  const handler = () => setState((p) => !p);
   const isHome = usePathname() === "/";
   return (
     <header className={`${styles.container} ${isHome ? styles.isHome : ""}`}>
@@ -34,7 +38,8 @@ const Header = () => {
         <ProfileLink />
       </div>
 
-      <MenuWrapper />
+      <Menu isOpen={state} handler={handler} />
+      <MenuBtn handler={handler} />
     </header>
   );
 };

@@ -1,10 +1,37 @@
 .container {
+  min-height: 620px;
+  margin: -1px -1px 0 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  gap: 28px;
   align-items: center;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+}
+
+.container:hover :is(h2, b) {
+  translate: 0 0;
+}
+.container h2,
+.container b {
+  transition: translate 200ms ease;
+  translate: 0 40px;
+}
+
+.container:hover a {
+  translate: 0 0;
+  opacity: 1;
+}
+
+.container a {
+  transition: all 400ms ease;
+  translate: 0 300%;
+  opacity: 0;
 }
 
 .container h2 {
+  max-width: 290px;
   font-size: 20px;
   line-height: 150%;
   text-align: center;
@@ -17,4 +44,24 @@
   line-height: 120%;
   text-align: center;
   color: #1e252c;
+}
+
+.container a {
+  width: 188px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 171%;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #1e252c;
+  border: 1px solid #1e252c;
+}
+
+.container a:hover {
+  background-color: var(--beige);
 }

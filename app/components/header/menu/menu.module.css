@@ -16,8 +16,12 @@
   translate: 0 0;
 }
 
+.container + button span {
+  background-color: #fff;
+}
+
 .container.open + button span {
-  background-color: #000;
+  background-color: #000 !important;
 }
 
 .container.open + button span:last-of-type {
