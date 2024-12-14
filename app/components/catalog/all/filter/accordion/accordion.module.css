@@ -69,3 +69,29 @@
   font-weight: 600;
   color: #000;
 }
+
+@media screen and (max-width: 767px) {
+  .items label {
+    padding: 2px 14px;
+  }
+
+  .container button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .container button::before {
+    border-width: 1px;
+    translate: 50% -70%;
+  }
+
+  .container button.open::before {
+    translate: 50% -20%;
+    rotate: 135deg;
+  }
+
+  .items label {
+    line-height: 200%;
+    font-size: 13px;
+  }
+}

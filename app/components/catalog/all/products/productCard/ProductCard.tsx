@@ -10,11 +10,11 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       <Image
         src={`/products/${product.type}/${product.image}`}
         alt={product.name}
-        width={155}
-        height={266}
+        width={210}
+        height={330}
       />
       <h2>{product.name}</h2>
-      <b>{product.price} Р</b>
+      <b>{product.price.toLocaleString()} Р</b>
       <Link href={"/"}>Подробнее</Link>
     </div>
   );

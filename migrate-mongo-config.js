@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+console.log(process.env.DB_NAME);
+
 const config = {
   mongodb: {
     // TODO Change (or review) the url to your MongoDB:

@@ -5,3 +5,24 @@
   align-items: center;
   position: relative;
 }
+
+.container label {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 286%;
+  color: #999;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    position: relative;
+  }
+
+  .container > div > div {
+    left: auto;
+    right: 0;
+    translate: 16% 100%;
+  }
+}

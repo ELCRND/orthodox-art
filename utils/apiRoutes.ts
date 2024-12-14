@@ -23,3 +23,14 @@ export const getProducts = async (db: Db) => {
 
   return products;
 };
+
+export const getSomeProducts = async (db: Db, start: number, end: number) => {
+  const products = await db
+    .collection("products")
+    .find()
+    .skip(start)
+    .limit(end - start + 1)
+    .toArray();
+
+  return products;
+};

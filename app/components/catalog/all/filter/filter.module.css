@@ -10,10 +10,20 @@
   align-items: center;
   background: #f2f2f2;
   position: relative;
+  text-wrap: nowrap;
 }
 
 @media screen and (max-width: 1279px) {
   .container {
     margin-top: 180px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    height: 40px;
+    margin-top: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }

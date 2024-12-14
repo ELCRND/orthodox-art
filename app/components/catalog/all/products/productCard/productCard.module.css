@@ -1,9 +1,9 @@
 .container {
   min-height: 620px;
   margin: -1px -1px 0 0;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 28px;
   align-items: center;
   border: 1px solid #e5e5e5;
@@ -31,7 +31,7 @@
 }
 
 .container h2 {
-  max-width: 290px;
+  max-width: 300px;
   font-size: 20px;
   line-height: 150%;
   text-align: center;
@@ -64,4 +64,40 @@
 
 .container a:hover {
   background-color: var(--beige);
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    min-height: 430px;
+    gap: 16px;
+  }
+
+  .container img {
+    width: 120px;
+    height: 220px;
+  }
+  .container h2 {
+    max-width: 268px;
+    font-size: 18px;
+    line-height: 167%;
+  }
+  .container b {
+    font-size: 18px;
+    line-height: 133%;
+  }
+  .container a {
+    width: 188px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 171%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #1e252c;
+    border: 1px solid #1e252c;
+  }
 }

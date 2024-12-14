@@ -75,20 +75,39 @@ const Filter = () => {
 
   return (
     <div className={styles.container}>
-      <LeftFilter>
-        {filterItemsList.available.values.map((item) => (
-          <Label key={item.value} text={item.text}>
-            <Input
-              isChecked={isChecked}
-              updateFilters={updateFilters}
-              type="radio"
-              name={filterItemsList.available.selectType}
-              selectType={filterItemsList.available.selectType}
-              selectValue={item.value}
-            />
-          </Label>
-        ))}
-      </LeftFilter>
+      {isWindowWide ? (
+        <LeftFilter>
+          <Accordion text={"Наличие"}>
+            {filterItemsList.available.values.map((item) => (
+              <Label key={item.value} text={item.text}>
+                <Input
+                  isChecked={isChecked}
+                  updateFilters={updateFilters}
+                  type="radio"
+                  name={filterItemsList.available.selectType}
+                  selectType={filterItemsList.available.selectType}
+                  selectValue={item.value}
+                />
+              </Label>
+            ))}
+          </Accordion>
+        </LeftFilter>
+      ) : (
+        <LeftFilter>
+          {filterItemsList.available.values.map((item) => (
+            <Label key={item.value} text={item.text}>
+              <Input
+                isChecked={isChecked}
+                updateFilters={updateFilters}
+                type="radio"
+                name={filterItemsList.available.selectType}
+                selectType={filterItemsList.available.selectType}
+                selectValue={item.value}
+              />
+            </Label>
+          ))}
+        </LeftFilter>
+      )}
 
       {isWindowWide ? (
         <CenterFilter>

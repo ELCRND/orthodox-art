@@ -6,20 +6,10 @@ import Chains from "../components/catalog/chains/Chains";
 import Icons from "../components/icons/Icons";
 
 import styles from "./catalog.module.css";
+import Catalog from "../components/catalog/Catalog";
 
 const CatalogPage = () => {
-  return (
-    <div>
-      <Hero />
-      <Crosses />
-      <Pendants />
-      <Bracelets />
-      <Chains />
-      <div className={styles.wrapper}>
-        <Icons />
-      </div>
-    </div>
-  );
+  return <Catalog />;
 };
 
 export default CatalogPage;

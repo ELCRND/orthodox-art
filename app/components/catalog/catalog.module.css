@@ -1,0 +1,30 @@
+.wrapper {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 30px;
+}
+
+.wrapper > div > div:first-of-type {
+  display: flex;
+  justify-content: center;
+  gap: 54px;
+}
+
+.wrapper > div path {
+  stroke: #000;
+}
+
+.wrapper > div h3 {
+  color: var(--dark) !important;
+}
+
+.wrapper > div p {
+  max-width: 390px;
+  display: block !important;
+}
+
+@media screen and (max-width: 767) {
+  .wrapper > div > div:first-of-type {
+    justify-content: flex-start;
+  }
+}
