@@ -11,6 +11,7 @@ module.exports = {
     return db.collection("products").insertMany(
       [...Array(12)].map((_, idx) => {
         const material = getRandomVulue(crossTypes);
+        const createSize=()=>faker.number.int({ min: 20, max: 55 })
 
         return {
           type: "crosses",
@@ -23,7 +24,7 @@ module.exports = {
           stock: faker.datatype.boolean(),
           isNew: faker.datatype.boolean(),
           material,
-          size: faker.number.int({ min: 20, max: 55 }),
+          size: faker.helpers.multiple(createSize, { count: 4 }),
           image: `crosses-${idx + 1}.png`,
         };
       })

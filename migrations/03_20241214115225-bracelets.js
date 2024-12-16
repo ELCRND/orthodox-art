@@ -11,6 +11,7 @@ module.exports = {
     return db.collection("products").insertMany(
       [...Array(13)].map((_, idx) => {
         const material = getRandomVulue(braceletsTypes);
+        const createSize = () => faker.number.int({ min: 20, max: 55 });
 
         return {
           type: "bracelets",
@@ -23,7 +24,7 @@ module.exports = {
           stock: faker.datatype.boolean(),
           isNew: faker.datatype.boolean(),
           material,
-          size: faker.number.int({ min: 20, max: 55 }),
+          size: faker.helpers.multiple(createSize, { count: 4 }),
           image: `bracelets-${idx + 1}.png`,
         };
       })

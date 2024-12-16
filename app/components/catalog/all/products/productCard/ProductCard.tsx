@@ -15,7 +15,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       />
       <h2>{product.name}</h2>
       <b>{product.price.toLocaleString()} Р</b>
-      <Link href={"/"}>Подробнее</Link>
+      <Link href={`/product/${product._id}`}>Подробнее</Link>
     </div>
   );
 };

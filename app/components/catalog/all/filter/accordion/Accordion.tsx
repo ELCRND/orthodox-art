@@ -23,8 +23,8 @@ const Accordion = ({
           if (React.isValidElement(child)) {
             return React.cloneElement(child, {
               ...child.props,
-              isFirst: index === 0,
-              isLast: !Array.isArray(children) || index === children.length - 1,
+              // isFirst: index === 0,
+              // isLast: !Array.isArray(children) || index === children.length - 1,
             });
           }
           return null;

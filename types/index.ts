@@ -7,5 +7,5 @@ export interface IProduct {
   isNew: boolean;
   material: "gold" | "silver";
   image: string;
-  size: string;
+  size: string[];
 }
