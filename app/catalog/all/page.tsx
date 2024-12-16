@@ -3,7 +3,7 @@ import Products from "@/app/components/catalog/all/products/Products";
 
 const catalogAllPage = async () => {
   const products = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/some?start=${0}&end=${11}`
+    `${process.env.BASE_URL}/api/products/some?start=${0}&end=${11}`
   ).then((res) => res.json());
 
   return (
