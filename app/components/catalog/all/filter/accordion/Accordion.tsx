@@ -19,7 +19,7 @@ const Accordion = ({
         {text || "Ещё"}
       </button>
       <div className={`${styles.items} ${value ? styles.open : ""}`}>
-        {React.Children.map(children, (child, index) => {
+        {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
             return React.cloneElement(child, {
               ...child.props,

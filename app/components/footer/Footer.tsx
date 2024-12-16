@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import styles from "./footer.module.css";
 import Links from "./links/Links";
 import Navigation from "./navigation/Navigation";

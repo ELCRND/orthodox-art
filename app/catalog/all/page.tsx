@@ -9,9 +9,11 @@ const catalogAllPage = async () => {
   return (
     <div>
       <Filter />
-      <Products data={products} />
+      <Products data={await products} />
     </div>
   );
 };
 
 export default catalogAllPage;
+
+export const dynamic = "force-dynamic";

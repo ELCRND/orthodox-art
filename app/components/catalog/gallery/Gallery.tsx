@@ -23,6 +23,7 @@ const Gallery = ({ imagesList }: Props) => {
   const [state, setState] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    const r = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setState(+entry.target.id);
@@ -45,12 +46,13 @@ const Gallery = ({ imagesList }: Props) => {
     }
 
     return () => {
-      ref.current &&
-        ref.current.childNodes.forEach((el) => {
+      if (r) {
+        r.childNodes.forEach((el) => {
           el.childNodes.forEach((e) => observer.unobserve(e as Element));
         });
+      }
     };
-  }, [ref.current]);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {

@@ -36,6 +36,7 @@ const ProductCard = ({ product }: { product?: IProduct }) => {
             alt={el.split(".")[0]}
             width={300}
             height={300}
+            key={el}
           />
         ))}
       </div>

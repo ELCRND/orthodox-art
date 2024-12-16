@@ -47,7 +47,7 @@ const Filter = () => {
       const search = current.toString();
       router.push(`${window.location.pathname}?${search}`);
     }
-  }, []);
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -112,7 +112,7 @@ const Filter = () => {
       {isWindowWide ? (
         <CenterFilter>
           <Accordion text={"Категория"}>
-            {filterItemsList.category.values.map((item, idx) => (
+            {filterItemsList.category.values.map((item) => (
               <Label key={item.value} text={item.text}>
                 <Input
                   isChecked={isChecked}
@@ -128,7 +128,7 @@ const Filter = () => {
         </CenterFilter>
       ) : (
         <CenterFilter>
-          {filterItemsList.category.values.map((item, idx) => (
+          {filterItemsList.category.values.map((item) => (
             <Label key={item.value} text={item.text}>
               <Input
                 isChecked={isChecked}

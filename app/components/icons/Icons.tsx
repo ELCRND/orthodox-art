@@ -11,6 +11,7 @@ const Icons = () => {
   const [state, setState] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
+    const r = ref.current;
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) setState(+entry.target.id);
     });
@@ -20,12 +21,9 @@ const Icons = () => {
     }
 
     return () => {
-      ref.current &&
-        ref.current.childNodes.forEach((el) =>
-          observer.unobserve(el as Element)
-        );
+      if (r) r.childNodes.forEach((el) => observer.unobserve(el as Element));
     };
-  }, [ref.current]);
+  }, []);
   return (
     <div className={styles.container}>
       <div ref={ref} className={styles.icons}>

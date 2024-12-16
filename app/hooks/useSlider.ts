@@ -25,7 +25,7 @@ export function useSlider(
   }, [isAutoSliding, nextSlide, autoSlideInterval]);
 
   const toggleAutoSlide = (v?: boolean) => {
-    v ? setIsAutoSliding(v) : setIsAutoSliding((prev) => !prev);
+    setIsAutoSliding((prev) => v || !prev);
   };
 
   const setSlideIndex = (n: number) => {

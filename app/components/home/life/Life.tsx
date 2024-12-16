@@ -12,18 +12,23 @@ const Life = () => {
   const { slideIdex, toPrev, toNext, setSlideIndex, toggleAutoSlide } =
     useSlider(6, isWindowWide ? 5000 : 0, 5000);
   const [isLast, setIsLast] = useState(false);
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
+    const r = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        entry.isIntersecting ? setIsLast(true) : setIsLast(false);
+        setIsLast(entry.isIntersecting ? true : false);
       },
       { threshold: 1.0 }
     );
-    observer.observe(ref.current.lastChild);
-    return () =>
-      ref.current?.lastChild && observer.unobserve(ref.current.lastChild);
+
+    if (ref.current?.lastChild)
+      observer.observe(ref.current.lastChild as Element);
+
+    return () => {
+      if (r?.lastChild) observer.unobserve(r.lastChild as Element);
+    };
   }, []);
 
   useEffect(() => {
@@ -72,7 +77,8 @@ const Life = () => {
           ref={ref}
           style={{
             translate: `-${
-              slideIdex * ref.current?.childNodes[0].offsetWidth
+              slideIdex *
+              (ref.current?.childNodes[0] as HTMLElement)?.offsetWidth
             }px 0`,
             transition: "translate 600ms ease",
           }}

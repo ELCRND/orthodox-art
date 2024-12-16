@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "./productCard/ProductCard";
 import { IProduct } from "../../../../../types";
@@ -15,8 +15,9 @@ const Products = ({ data }: { data: IProduct[] }) => {
   const searchParams = useSearchParams();
 
   const getQuery = () => [...searchParams.values()].toString();
+  const queries = getQuery();
 
-  const filterProducts = () => {
+  const filterProducts = useCallback(() => {
     const queries = Object.fromEntries(searchParams.entries());
     setFilteredProducts(
       products.filter((product) => {
@@ -28,7 +29,6 @@ const Products = ({ data }: { data: IProduct[] }) => {
             ? product.material
             : queries?.material || product.material;
 
-        console.log(type, material, product.type, product.material);
         return (
           product.stock === stock &&
           product.type === type &&
@@ -36,11 +36,11 @@ const Products = ({ data }: { data: IProduct[] }) => {
         );
       })
     );
-  };
+  }, [products, searchParams]);
 
   useEffect(() => {
     filterProducts();
-  }, [getQuery(), products.length]);
+  }, [queries, products.length, filterProducts]);
 
   const handleLoadMore = async () => {
     setLoading(true);

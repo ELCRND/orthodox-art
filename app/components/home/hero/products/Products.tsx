@@ -1,10 +1,10 @@
-import { forwardRef, LegacyRef } from "react";
+import { RefObject } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 import styles from "./products.module.css";
 
-const Products = forwardRef((_, ref: LegacyRef<HTMLDivElement> | undefined) => {
+const Products = ({ ref }: { ref: RefObject<HTMLDivElement> }) => {
   return (
     <div className={styles.container} ref={ref}>
       <Image
@@ -24,6 +24,6 @@ const Products = forwardRef((_, ref: LegacyRef<HTMLDivElement> | undefined) => {
       </p>
     </div>
   );
-});
+};
 
 export default Products;
