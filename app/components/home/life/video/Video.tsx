@@ -17,11 +17,6 @@ const Video = ({
     toggleAutoSlide(false);
   };
 
-  const handlePause = () => {
-    setIsPlay(false);
-    toggleAutoSlide(true);
-  };
-
   return (
     <div className={styles.container}>
       <video
@@ -29,7 +24,6 @@ const Video = ({
         height={310}
         ref={ref}
         controls={isPlay}
-        onPause={handlePause}
         onPlay={() => setIsPlay(true)}
       >
         <source src={"/main/life/life-2.mp4"} type="video/mp4" />

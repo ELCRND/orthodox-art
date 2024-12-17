@@ -40,12 +40,14 @@ const Hero = () => {
 
   return (
     <div className={styles.container}>
-      <Production ref={productionRef} />
-      <Products ref={productsRef} />
+      <div className={styles.wrapper}>
+        <Production ref={productionRef} />
+        <Products ref={productsRef} />
+      </div>
 
       <div className={styles.slideIndicators}>
-        <span className={`${state === "left" && styles.active}`}></span>
-        <span className={`${state === "right" && styles.active}`}></span>
+        <span className={`${state === "left" ? styles.active : ""}`}></span>
+        <span className={`${state === "right" ? styles.active : ""}`}></span>
       </div>
     </div>
   );

@@ -1,0 +1,127 @@
+.container {
+  position: relative;
+}
+
+.mainImage {
+  max-width: 550px;
+  height: 664px;
+  position: relative;
+  box-shadow: 0 0 20px rgb(105, 105, 105);
+}
+
+.otherImages {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 15% -50%;
+}
+
+.otherImages button {
+  width: 168px;
+  height: 168px;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  box-shadow: -1px -1px 10px rgb(105, 105, 105);
+}
+
+.indicators {
+  display: none;
+}
+
+@media screen and (max-width: 1279px) {
+  .container {
+    grid-row: 1 / 2 !important;
+  }
+  .mainImage {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 1079px) {
+  .mainImage {
+    left: 50%;
+    translate: -50% 0;
+  }
+}
+
+/* @media screen and (max-width: 767px) {
+    .container {
+      max-width: 290px;
+      height: 195px;
+      margin-left: auto;
+      margin-right: auto;
+      overflow: scroll;
+      display: flex;
+      scroll-snap-type: x mandatory;
+      -ms-overflow-style: none; 
+      scrollbar-width: none; 
+      position: static;
+    }
+    .container::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .mainImage {
+      width: 290px;
+      height: 190px;
+      position: static;
+      translate: 0 0;
+      box-shadow: none;
+      scroll-snap-align: center;
+    }
+  
+    .mainImage img {
+      width: 290px !important;
+  
+      position: static !important;
+    }
+    .otherImages {
+      display: contents;
+    }
+  
+    .otherImages button {
+      width: 290px !important;
+      height: 190px !important;
+      position: static !important;
+      box-shadow: none;
+      scroll-snap-align: center;
+    }
+  
+    .otherImages img {
+      width: 290px !important;
+      height: 190px !important;
+      position: static !important;
+    }
+  
+    .indicators {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      position: absolute;
+      top: 170px;
+      left: 50%;
+      translate: -50% 0;
+    }
+  
+    .indicators span {
+      width: 6px;
+      height: 6px;
+      background-color: var(--dark);
+      border-radius: 50%;
+      border: 1px solid var(--dark);
+    }
+    .indicators span.active {
+      background-color: transparent;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .mainImage {
+      height: 240px;
+    }
+  }
+   */

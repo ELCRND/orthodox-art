@@ -66,9 +66,9 @@
   }
 
   .mainImage {
-    width: 290px !important;
-    height: 190px !important;
-    position: static !important;
+    width: 290px;
+    height: 190px;
+    position: static;
     translate: 0 0;
     box-shadow: none;
     scroll-snap-align: center;
@@ -116,5 +116,11 @@
   }
   .indicators span.active {
     background-color: transparent;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .mainImage {
+    height: 240px;
   }
 }

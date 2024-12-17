@@ -1,29 +1,14 @@
 "use client";
-
-import { useEffect, useRef, useState } from "react";
 import GuaranteeIcon from "./GuaranteeIcon";
 import HandmadeIcon from "./HandmadeIcon";
 import UniquenessIcon from "./UniquenessIcon";
 
 import styles from "./icons.module.css";
+import { useSliderIndicators } from "@/app/hooks/useSliderIndicators";
 
 const Icons = () => {
-  const [state, setState] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const r = ref.current;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) setState(+entry.target.id);
-    });
+  const { indicatorNum, ref } = useSliderIndicators();
 
-    if (ref.current) {
-      ref.current.childNodes.forEach((el) => observer.observe(el as Element));
-    }
-
-    return () => {
-      if (r) r.childNodes.forEach((el) => observer.unobserve(el as Element));
-    };
-  }, []);
   return (
     <div className={styles.container}>
       <div ref={ref} className={styles.icons}>
@@ -36,7 +21,7 @@ const Icons = () => {
         {[0, 0, 0].map((_, idx) => (
           <span
             key={idx}
-            className={`${idx === state && styles.active}`}
+            className={`${idx === indicatorNum && styles.active}`}
           ></span>
         ))}
       </div>
