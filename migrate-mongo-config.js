@@ -5,7 +5,7 @@ console.log(process.env.DB_NAME);
 const config = {
   mongodb: {
     // TODO Change (or review) the url to your MongoDB:
-    url: process.env.DB_URI,
+    url: process.env.NEXT_PUBLIC_DB_URI,
 
     // TODO Change this to your database name:
     databaseName: process.env.DB_NAME,

@@ -1,7 +1,7 @@
 import { Db, MongoClient, ObjectId } from "mongodb";
 const mongoose = require("mongoose");
 
-export const clientPromise = MongoClient.connect(process.env.DB_URI as string, {
+export const clientPromise = MongoClient.connect(process.env.NEXT_PUBLIC_DB_URI as string, {
   maxPoolSize: 5,
 });
 

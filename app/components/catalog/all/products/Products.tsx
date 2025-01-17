@@ -46,14 +46,7 @@ const Products = ({ data }: { data: IProduct[] }) => {
     setLoading(true);
     try {
       const updateData = await fetch(
-        `${
-          process.env.NEXT_PUBLIC_BASE_URL
-        }/api/products/some?start=${countProducts}&end=${countProducts + 11}`,
-        {
-          headers: {
-            id: "123",
-          },
-        }
+        `/api/products/some?start=${countProducts}&end=${countProducts + 11}`
       );
       setProducts([...products, ...(await updateData.json())]);
       setCountProducts((p) => p + 12);

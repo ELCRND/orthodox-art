@@ -7,7 +7,7 @@ export async function connectToMongoDB() {
     return cachedConnection;
   }
   try {
-    const cnx = await mongoose.connect(process.env.DB_URI!);
+    const cnx = await mongoose.connect(process.env.NEXT_PUBLIC_DB_URI!);
     cachedConnection = cnx.connection;
     return cachedConnection;
   } catch (error) {

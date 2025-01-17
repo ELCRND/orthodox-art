@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import LeftFilter from "./leftFilter/LeftFilter";
 import CenterFilter from "./centerFilter/CenterFilter";
 import RightFilter from "./rightFilter/RightFilter";
-import Accordion from "./accordion/Accordion";
+import Accordion from "../../../accordion/Accordion";
 import Label from "./label/Label";
 import Input from "./input/Input";
 import { filterItemsList } from "@/app/catalog/data";

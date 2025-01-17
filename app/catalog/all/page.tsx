@@ -1,5 +1,6 @@
 import Filter from "@/app/components/catalog/all/filter/Filter";
 import Products from "@/app/components/catalog/all/products/Products";
+import { Metadata } from "next";
 
 const catalogAllPage = async () => {
   const products = await fetch(
@@ -15,5 +16,9 @@ const catalogAllPage = async () => {
 };
 
 export default catalogAllPage;
+
+export const metadata: Metadata = {
+  title: "Каталог",
+};
 
 export const dynamic = "force-dynamic";

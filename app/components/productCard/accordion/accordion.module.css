@@ -1,0 +1,113 @@
+.container {
+  width: fit-content;
+  margin-top: 36px;
+  position: relative;
+}
+
+.items {
+  width: 100%;
+  display: grid;
+  row-gap: 8px;
+  grid-template-rows: 0fr;
+  background-color: #ebebeb;
+  transition: all 200ms ease;
+  position: absolute;
+  z-index: 1;
+}
+
+.textWrapper {
+  width: fit-content;
+  padding: 4px 24px 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 250%;
+  text-align: right;
+  color: #000;
+  user-select: none;
+  transition: background-color 200ms ease;
+}
+
+.textWrapper > * {
+  cursor: pointer;
+}
+
+.textWrapper:hover {
+  background-color: var(--beige);
+}
+
+.textWrapper button {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  position: relative;
+  user-select: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 250%;
+  text-align: right;
+  color: #000;
+}
+
+.textWrapper button::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #000;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 200% -70%;
+  rotate: -45deg;
+  transition: rotate 200ms ease;
+}
+
+.textWrapper button.open:before {
+  rotate: 135deg;
+  translate: 200% -30%;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+.items ul {
+  max-width: 160px;
+  display: grid;
+  overflow: hidden;
+}
+
+.items.open {
+  grid-template-rows: 1fr;
+}
+
+.items ul button {
+  padding: 8px 4px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.items ul button:hover {
+  background-color: var(--beige);
+}
+
+.textWrapper:has(label.visible) {
+  padding-right: 8px;
+}
+.textWrapper:has(label.visible):has(button.open) {
+  background-color: var(--beige);
+}
+
+.textWrapper label.visible + button:before {
+  display: none;
+}

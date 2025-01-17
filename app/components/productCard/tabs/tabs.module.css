@@ -1,0 +1,65 @@
+.tabs {
+  margin-top: 52px;
+  display: flex;
+  gap: 24px;
+  position: relative;
+}
+
+.tab {
+  display: contents;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 286%;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.tab label {
+  position: relative;
+  cursor: pointer;
+}
+
+.tab label::before {
+  content: "";
+  width: 0;
+  height: 2px;
+  background-color: var(--dark);
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transition: all 200ms ease;
+}
+
+.tab label:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+.tab [type="radio"] {
+  display: none;
+}
+
+.tabWrapper p {
+  max-width: 464px;
+  margin-top: 24px;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  font-size: 14px;
+  line-height: 171%;
+  color: #000;
+  transition: opacity 400ms ease;
+}
+
+.tabWrapper:has(:checked) p {
+  opacity: 1;
+}
+.tabWrapper:has(:checked) label {
+  color: #000;
+}
+
+.tabWrapper:has(:checked) label::before {
+  width: 100%;
+  left: 0;
+}
