@@ -63,7 +63,7 @@ const Gallery = ({ product }: { product: IProduct | undefined }) => {
                 width={140}
                 height={125}
                 key={el + i}
-                onClick={function (e) {
+                onClick={function () {
                   setGallery((prevState) => {
                     const prev = prevState.mianImage;
                     return {
