@@ -1,15 +1,18 @@
 import { Db, MongoClient, ObjectId } from "mongodb";
 const mongoose = require("mongoose");
 
-export const clientPromise = MongoClient.connect(process.env.NEXT_PUBLIC_DB_URI as string, {
-  maxPoolSize: 5,
-});
+export const clientPromise = MongoClient.connect(
+  process.env.NEXT_PUBLIC_DB_URI as string,
+  {
+    maxPoolSize: 5,
+  }
+);
 
 export const getDbAndReqBody = async (
   clientPromise: Promise<MongoClient>,
   req: Request | null
 ) => {
-  const db = (await clientPromise).db(process.env.DB_NAME);
+  const db = (await clientPromise).db(process.env.NEXT_PUBLIC_DB_NAME);
 
   if (req) {
     const reqBody = await req.json();
