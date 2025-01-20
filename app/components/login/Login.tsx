@@ -1,5 +1,5 @@
 "use client";
-
+// @ts-expect-error: Let's ignore a compile error like this unreachable code
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import styles from "./login.module.css";

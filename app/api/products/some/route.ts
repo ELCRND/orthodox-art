@@ -19,8 +19,8 @@ export async function GET(request: Request) {
   const filters = new Map();
 
   filters.set("stock", available);
-  category && category !== "all" && filters.set("type", category);
-  material && material !== "any" && filters.set("material", material);
+  if (category && category !== "all") filters.set("type", category);
+  if (material && material !== "any") filters.set("material", material);
 
   const { db } = await getDbAndReqBody(clientPromise, null);
 

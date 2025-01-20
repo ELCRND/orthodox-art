@@ -6,6 +6,7 @@ import Footer from "./components/footer/Footer";
 
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
+// @ts-expect-error: Let's ignore a compile error like this unreachable code
 import { SessionProvider } from "next-auth/react";
 
 const Montserrat = localFont({

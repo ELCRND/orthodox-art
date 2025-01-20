@@ -16,14 +16,17 @@
   cursor: pointer;
 }
 
-.profile [type="checkbox"] {
-  display: none;
+.profile button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .profileWindow {
   display: grid;
   justify-content: center;
   position: absolute;
+  z-index: 30;
   bottom: 0;
   left: 0;
   translate: -80% 100%;
@@ -49,4 +52,10 @@
   font-size: 16px;
   font-weight: 600 !important;
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .profileWindow {
+    translate: 0 100%;
+  }
 }

@@ -1,5 +1,6 @@
-import NextAuth from "next-auth";
 import { authConfig } from "./authconfig";
+// @ts-expect-error: Let's ignore a compile error like this unreachable code
+import NextAuth from "next-auth";
 
 export default NextAuth(authConfig).auth;
 

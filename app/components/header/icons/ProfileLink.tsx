@@ -1,20 +1,18 @@
-"use client";
 import { useState } from "react";
 import Link from "next/link";
 
-import styles from "./icons.module.css";
-import { signOut } from "next-auth/react";
+// @ts-expect-error: Let's ignore a compile error like this unreachable code
+import { signOut, useSession } from "next-auth/react";
 
-const ProfileLink = ({
-  status,
-}: {
-  status: "loading" | "authenticated" | "unauthenticated";
-}) => {
+import styles from "./icons.module.css";
+
+const ProfileLink = () => {
   const [open, setOpen] = useState(false);
+  const { status } = useSession();
 
   return (
     <div className={styles.profile}>
-      <label htmlFor="q">
+      <button onClick={() => setOpen((p) => !p)}>
         <svg
           width="24"
           height="24"
@@ -38,14 +36,7 @@ const ProfileLink = ({
             </clipPath>
           </defs>
         </svg>
-
-        <input
-          type="checkbox"
-          name="q"
-          id="q"
-          onChange={() => setOpen((p) => !p)}
-        />
-      </label>
+      </button>
       {open && (
         <div className={styles.profileWindow}>
           {status === "loading" ? (

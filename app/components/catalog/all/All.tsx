@@ -70,9 +70,10 @@ const All = ({ data }: { data: IProduct[] }) => {
   };
 
   useEffect(() => {
+    const r = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        entry.isIntersecting ? setIsSticky(false) : setIsSticky(true);
+        setIsSticky(entry.isIntersecting ? false : true);
       },
       {
         threshold: 0.9,
@@ -82,7 +83,7 @@ const All = ({ data }: { data: IProduct[] }) => {
     if (ref.current) observer.observe(ref.current);
 
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      if (r) observer.unobserve(r);
     };
   }, []);
   return (
