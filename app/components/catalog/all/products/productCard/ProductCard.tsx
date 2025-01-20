@@ -10,7 +10,7 @@ const ProductCard = ({ product }: { product: IProduct }) => {
       <Image
         src={`/products/${product.type}/${product.image}`}
         alt={product.name}
-        width={290}
+        width={330}
         height={330}
       />
       <h2>{product.name}</h2>

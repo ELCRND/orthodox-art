@@ -1,75 +1,38 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import ProductCard from "./productCard/ProductCard";
 import { IProduct } from "../../../../../types";
 
 import styles from "./products.module.css";
+import { useCurrentSearchParams } from "@/app/hooks/useCurrentSearchParams";
 
-const Products = ({ data }: { data: IProduct[] }) => {
-  const [products, setProducts] = useState(data);
-  const [filteredProducts, setFilteredProducts] = useState(data);
-  const [loading, setLoading] = useState(false);
-  const [finished, setFinished] = useState(false);
-  const [countProducts, setCountProducts] = useState(data.length);
-  const searchParams = useSearchParams();
+type Props = {
+  products: IProduct[];
+  loadProducts: (
+    filters: string,
+    start?: number,
+    end?: number
+  ) => Promise<void>;
+  loading: boolean;
+  finished: boolean;
+};
 
-  const getQuery = () => [...searchParams.values()].toString();
-  const queries = getQuery();
-
-  const filterProducts = useCallback(() => {
-    const queries = Object.fromEntries(searchParams.entries());
-    setFilteredProducts(
-      products.filter((product) => {
-        const stock = queries?.available === "stock" ? true : false;
-        const type =
-          queries?.category === "all" ? product.type : queries.category;
-        const material =
-          queries?.material === "any"
-            ? product.material
-            : queries?.material || product.material;
-
-        return (
-          product.stock === stock &&
-          product.type === type &&
-          product.material === material
-        );
-      })
-    );
-  }, [products, searchParams]);
-
-  useEffect(() => {
-    filterProducts();
-  }, [queries, products.length, filterProducts]);
-
-  const handleLoadMore = async () => {
-    setLoading(true);
-    try {
-      const updateData = await fetch(
-        `/api/products/some?start=${countProducts}&end=${countProducts + 11}`
-      );
-      setProducts([...products, ...(await updateData.json())]);
-      setCountProducts((p) => p + 12);
-      // filterProducts();
-      if (updateData.statusText === "finished") {
-        setFinished(true);
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+const Products = ({ products, loadProducts, loading, finished }: Props) => {
+  const searchParams = useCurrentSearchParams();
   return (
     <div className={styles.container}>
       <div>
-        {filteredProducts.map((product) => (
+        {products.map((product) => (
           <ProductCard key={product._id} product={product} />
         ))}
       </div>
       <button
-        onClick={handleLoadMore}
+        onClick={() =>
+          loadProducts(
+            searchParams.toString(),
+            products.length,
+            products.length + 7
+          )
+        }
         disabled={loading || finished}
         className={`${loading ? styles.loading : ""} ${
           finished ? styles.finished : ""

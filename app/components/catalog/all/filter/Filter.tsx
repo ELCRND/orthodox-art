@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import LeftFilter from "./leftFilter/LeftFilter";
@@ -10,41 +9,45 @@ import Input from "./input/Input";
 import { filterItemsList } from "@/app/catalog/data";
 
 import styles from "./filter.module.css";
+import { useCurrentSearchParams } from "@/app/hooks/useCurrentSearchParams";
 
-const Filter = () => {
+type Props = {
+  loadProducts: (
+    filters: string,
+    start?: number,
+    end?: number
+  ) => Promise<void>;
+  isSticky: boolean;
+};
+
+const Filter = ({ isSticky, loadProducts }: Props) => {
   const [isWindowWide, setIsWindowWide] = useState<boolean | null>(true);
-
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const getQuery = () =>
-    new URLSearchParams(Array.from(searchParams.entries()));
+  const searchParams = useCurrentSearchParams();
 
   const updateFilters = (key: string, value: string) => {
-    const current = getQuery();
-
-    if (current.has(key)) {
-      current.set(key, value);
+    if (searchParams.has(key)) {
+      searchParams.set(key, value);
     } else {
-      current.append(key, value);
+      searchParams.append(key, value);
     }
 
-    const search = current.toString();
+    const search = searchParams.toString();
     const query = search ? `?${search}` : "";
 
     router.push(`${window.location.pathname}${query}`);
+    loadProducts(search);
   };
 
   useEffect(() => {
-    const current = getQuery();
-    if (!current.has("available")) {
-      current.append("available", "stock");
-      const search = current.toString();
+    if (!searchParams.has("available")) {
+      searchParams.append("available", "stock");
+      const search = searchParams.toString();
       router.push(`${window.location.pathname}?${search}`);
     }
-    if (!current.has("category")) {
-      current.append("category", "all");
-      const search = current.toString();
+    if (!searchParams.has("category")) {
+      searchParams.append("category", "all");
+      const search = searchParams.toString();
       router.push(`${window.location.pathname}?${search}`);
     }
   });
@@ -74,7 +77,7 @@ const Filter = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isSticky && styles.sticky}`}>
       {isWindowWide ? (
         <LeftFilter>
           <Accordion text={"Наличие"}>
@@ -164,20 +167,3 @@ const Filter = () => {
 };
 
 export default Filter;
-
-// const updateFilters = (key: string, value: string) => {
-//   const current = getQuery();
-
-//   const values = current.getAll(key);
-//   if (values.includes(value)) {
-//     current.delete(key);
-//     values.filter((v) => v !== value).forEach((v) => current.append(key, v));
-//   } else {
-//     current.append(key, value);
-//   }
-
-//   const search = current.toString();
-//   const query = search ? `?${search}` : "";
-
-//   router.push(`${window.location.pathname}${query}`);
-// };

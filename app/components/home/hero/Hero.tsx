@@ -11,8 +11,6 @@ const Hero = () => {
   const productsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const r1 = productionRef.current;
-    const r2 = productsRef.current;
     const observer = new IntersectionObserver(
       ([entry]) =>
         entry.target === productionRef.current
@@ -33,8 +31,8 @@ const Hero = () => {
     }
 
     return () => {
-      if (r1) observer.unobserve(r1);
-      if (r2) observer.unobserve(r2);
+      if (productionRef.current) observer.unobserve(productionRef.current);
+      if (productsRef.current) observer.unobserve(productsRef.current);
     };
   }, []);
 

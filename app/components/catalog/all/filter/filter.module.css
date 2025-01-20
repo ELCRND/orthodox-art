@@ -9,8 +9,18 @@
   display: flex;
   align-items: center;
   background: #f2f2f2;
-  position: relative;
-  text-wrap: nowrap;
+  white-space: nowrap;
+  transition: all 400ms ease-in-out;
+}
+
+.container.sticky {
+  max-width: 100%;
+  padding-left: 70px;
+  padding-right: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgb(206, 206, 206) inset;
 }
 
 @media screen and (max-width: 1279px) {
@@ -23,6 +33,11 @@
   .container {
     height: 40px;
     margin-top: 80px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .container.sticky {
     padding-left: 15px;
     padding-right: 15px;
   }

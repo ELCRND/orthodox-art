@@ -7,5 +7,46 @@
   line-height: 114%;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  /* color: #fff; */
+}
+
+.profile {
+  position: relative;
+}
+.profile svg {
+  cursor: pointer;
+}
+
+.profile [type="checkbox"] {
+  display: none;
+}
+
+.profileWindow {
+  display: grid;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  translate: -80% 100%;
+  background-color: var(--grey-light);
+}
+
+.profileWindow a {
+  color: #000 !important;
+  font-size: 16px !important;
+}
+
+.profileWindow > * {
+  padding: 8px 4px;
+}
+
+.profileWindow > *:hover {
+  background-color: var(--grey);
+}
+
+.profileWindow > button {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 600 !important;
+  cursor: pointer;
 }

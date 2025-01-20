@@ -1,18 +1,19 @@
-import Filter from "@/app/components/catalog/all/filter/Filter";
-import Products from "@/app/components/catalog/all/products/Products";
+import All from "@/app/components/catalog/all/All";
 import { Metadata } from "next";
 
-const catalogAllPage = async () => {
-  const products = await fetch(
-    `${process.env.BASE_URL}/api/products/some?start=${0}&end=${11}`
+const catalogAllPage = async ({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) => {
+  const { category } = await searchParams;
+  const data = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_BASE_URL
+    }/api/products/some?start=${0}&end=${5}&available=stock&category=${category}`
   ).then((res) => res.json());
 
-  return (
-    <div>
-      <Filter />
-      <Products data={await products} />
-    </div>
-  );
+  return <All data={await data} />;
 };
 
 export default catalogAllPage;

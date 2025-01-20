@@ -12,11 +12,13 @@ import Menu from "./menu/Menu";
 import MenuBtn from "./menuBtn/MenuBtn";
 
 import styles from "./header.module.css";
+import { useSession } from "next-auth/react";
 
 const Header = () => {
   const [state, setState] = useState(false);
   const handler = () => setState((p) => !p);
   const isHome = usePathname() === "/";
+  const { status } = useSession();
   return (
     <header className={`${styles.container} ${isHome ? styles.isHome : ""}`}>
       <Link href={"/"} className={styles.logo}>
@@ -35,7 +37,7 @@ const Header = () => {
       <div className={styles.links}>
         <WhatsAppLink />
         <CartLink />
-        <ProfileLink />
+        <ProfileLink status={status} />
       </div>
 
       <Menu isOpen={state} handler={handler} />

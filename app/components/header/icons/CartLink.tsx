@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const CartLink = () => {
   return (
-    <Link href={"/cart"}>
+    <Link href={"/basket"}>
       <svg
         width="24"
         height="24"

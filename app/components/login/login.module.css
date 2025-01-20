@@ -1,0 +1,167 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  background-color: #fafafa;
+}
+
+.content {
+  padding: 20px 28px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: #fff;
+}
+
+.content h1 {
+  font-weight: 600;
+  font-size: 32px;
+  color: #1e1e1e;
+}
+
+.content > button {
+  width: 360px;
+  height: 58px;
+  border: 1px solid rgba(30, 30, 30, 0.2);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff;
+  color: #1e1e1e;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  transition: background-color 250ms ease, color 250ms ease, opacity 250ms ease,
+    border-color 250ms ease;
+  cursor: pointer;
+}
+
+.content > button:hover {
+  background-color: #5985e5;
+  border-color: #5985e5;
+  color: #fff;
+}
+
+.content > button:last-of-type:hover {
+  background-color: #00a9a4;
+  border-color: #00a9a4;
+}
+
+.content > button:active {
+  opacity: 0.7;
+}
+
+.content > button > span:first-of-type {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.or {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(30, 30, 30, 0.4);
+}
+
+.or div {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(30, 30, 30, 0.2);
+}
+
+.content form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content form input {
+  width: 100%;
+  padding: 14px 20px;
+  border: 1px solid rgba(30, 30, 30, 0.2);
+  border-radius: 10px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(30, 30, 30, 1);
+  outline: none;
+}
+
+.content form input::placeholder {
+  color: rgba(30, 30, 30, 0.7);
+}
+
+.content form button[type="submit"] {
+  height: 45px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: #3792de;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+  transition: box-shadow 250ms ease;
+}
+
+.content form button[type="submit"]:hover {
+  box-shadow: 0 0 5px rgba(30, 30, 30, 0.7) inset;
+  color: #fff;
+}
+
+.content form button[type="submit"]:active {
+  box-shadow: none;
+}
+
+.content form button {
+  border: none;
+  background-color: transparent;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  color: rgba(30, 30, 30, 0.7);
+  cursor: pointer;
+  transition: color 250ms ease;
+}
+
+.content form button:hover {
+  color: rgba(30, 30, 30, 1);
+}
+
+.content form button:active {
+  color: rgba(30, 30, 30, 0.7);
+}
+
+.container p {
+  font-size: 16px;
+  text-align: center;
+  color: rgba(30, 30, 30, 0.4);
+}
+
+.container p button {
+  font-size: 16px;
+  color: #3792de;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}

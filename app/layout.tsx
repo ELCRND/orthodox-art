@@ -6,6 +6,7 @@ import Footer from "./components/footer/Footer";
 
 import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
+import { SessionProvider } from "next-auth/react";
 
 const Montserrat = localFont({
   src: [
@@ -45,20 +46,22 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${Montserrat.className}`}>
-        <Header />
-        {children}
-        <Footer />
-        <ToastContainer
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          draggable
-          theme="dark"
-          transition={Zoom}
-        />
+        <SessionProvider>
+          <Header />
+          {children}
+          <Footer />
+          <ToastContainer
+            position="top-center"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            draggable
+            theme="dark"
+            transition={Zoom}
+          />
+        </SessionProvider>
       </body>
     </html>
   );

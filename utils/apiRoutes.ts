@@ -1,5 +1,4 @@
 import { Db, MongoClient, ObjectId } from "mongodb";
-const mongoose = require("mongoose");
 
 export const clientPromise = MongoClient.connect(
   process.env.NEXT_PUBLIC_DB_URI as string,
@@ -52,10 +51,16 @@ export const getGalleryProduct = async (db: Db, id: string) => {
   return data;
 };
 
-export const getSomeProducts = async (db: Db, start: number, end: number) => {
+export const getSomeProducts = async (
+  db: Db,
+  start: number,
+  end: number,
+  filters: { stock: boolean; type?: string; material?: string }
+) => {
+  console.log(filters, "!!!");
   const products = await db
     .collection("products")
-    .find()
+    .find(filters)
     .skip(start)
     .limit(end - start + 1)
     .toArray();

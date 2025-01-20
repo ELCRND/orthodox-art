@@ -6,13 +6,17 @@
   position: relative;
 }
 
-.container label {
+.container > * {
   font-weight: 500;
   font-size: 14px;
   line-height: 286%;
   color: #999;
   cursor: pointer;
   transition: color 200ms ease;
+}
+
+.container > * > * {
+  background-color: transparent;
 }
 
 @media screen and (max-width: 767px) {
