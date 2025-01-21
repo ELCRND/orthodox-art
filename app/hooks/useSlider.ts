@@ -47,5 +47,7 @@ export function useSlider(
     toPrev: prevSlide,
     toNext: nextSlide,
     toggleAutoSlide,
+    isFirst: currentIndex === 0,
+    isLast: currentIndex === quantSlides - 1,
   };
 }

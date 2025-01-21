@@ -87,8 +87,7 @@
 
 .content form {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 20px;
 }
 
@@ -109,6 +108,7 @@
 }
 
 .content form button[type="submit"] {
+  width: 100%;
   height: 45px;
   border: none;
   display: flex;
@@ -133,6 +133,9 @@
 }
 
 .content form button {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   border: none;
   background-color: transparent;
   font-family: var(--font-family);
@@ -164,4 +167,10 @@
   cursor: pointer;
   border: none;
   background-color: transparent;
+}
+
+@media screen and (max-width: 439px) {
+  .content > button {
+    width: 300px;
+  }
 }

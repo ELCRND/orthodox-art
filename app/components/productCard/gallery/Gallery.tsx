@@ -1,83 +1,94 @@
+import { useSlider } from "@/app/hooks/useSlider";
 import { IProduct } from "@/types/index";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import Loader from "../../Loader/Loader";
+import { useRef, useState } from "react";
 import styles from "./gallery.module.css";
+import ImageElement from "./imageElement/ImageElement";
+import MainImage from "./mainImage/MainImage";
+import VideoElement from "./videoElement/VideoElement";
 
 const Gallery = ({ product }: { product: IProduct | undefined }) => {
-  const [loading, setLoading] = useState<boolean>(false);
   const [gallery, setGallery] = useState({
     mianImage: `/products/${product?.type}/${product?.image}`,
-    otherImages: ["/"],
+    otherImages: [
+      `/products/${product?.type}/${product?.image}`,
+      "/products/extra/crosses-1-extra-1.png",
+      "/products/extra/crosses-1-extra-2.png",
+      "/products/extra/crosses-1-extra-3.mp4",
+      "/products/extra/crosses-1-extra-4.png",
+      "/products/extra/crosses-1-extra-5.png",
+    ],
   });
+  const ref = useRef<HTMLDivElement>(null);
+  const { slideIdex, toPrev, toNext, isFirst, isLast } = useSlider(5);
 
-  useEffect(() => {
-    try {
-      setLoading(true);
-      fetch(`/api/products/gallery?id=${product?._id}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setGallery((prev) => ({
-            ...prev,
-            otherImages: data.gallery.map(
-              (el: string) => `/products/extra/${el}`
-            ),
-          }));
-          setLoading(false);
-        });
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  }, [product?._id]);
+  const handleChangeImage = (el: string) => {
+    setGallery((prevState) => {
+      return {
+        mianImage: el,
+        otherImages: [...prevState.otherImages],
+      };
+    });
+  };
+
+  // useEffect(() => {
+  //   try {
+  //     setLoading(true);
+  //     fetch(`/api/products/gallery?id=${product?._id}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         setGallery((prev) => ({
+  //           ...prev,
+  //           otherImages: data.gallery.map(
+  //             (el: string) => `/products/extra/${el}`
+  //           ),
+  //         }));
+  //         setLoading(false);
+  //       });
+  //   } catch (error) {
+  //     console.log(error);
+  //     setLoading(false);
+  //   }
+  // }, [product?._id]);
 
   return (
     <div className={styles.container}>
-      <div className={styles.mainImage}>
-        <Image
-          src={gallery.mianImage}
-          alt={product?.name || ""}
-          width={642}
-          height={622}
-          draggable={false}
-          key="main"
-        />
-      </div>
+      <MainImage path={gallery.mianImage} desc={product?.name || ""} />
 
       <div className={styles.otherImages}>
-        {loading ? (
-          <Loader />
-        ) : (
-          gallery.otherImages.map((el, i) => {
-            const type = el.substring(el.length, el.length - 3);
-            return type === "mp4" ? (
-              <div className={styles.videoContainer} key={el}>
-                <video width={120} height={125}>
-                  <source src={el} type="video/mp4" />
-                </video>
-              </div>
-            ) : (
-              <Image
-                src={el}
-                alt={el.split(".")[0]}
-                width={140}
-                height={125}
-                key={el + i}
-                onClick={function () {
-                  setGallery((prevState) => {
-                    const prev = prevState.mianImage;
-                    return {
-                      mianImage: el,
-                      otherImages: prevState.otherImages.map((img) =>
-                        el === img ? prev : img
-                      ),
-                    };
-                  });
-                }}
-              />
-            );
-          })
-        )}
+        <button
+          className={styles.prev}
+          onClick={toPrev}
+          disabled={isFirst}
+        ></button>
+
+        <div className={styles.slider}>
+          <div
+            className={styles.row}
+            ref={ref}
+            style={{
+              translate: `-${
+                slideIdex *
+                (ref.current?.childNodes[0] as HTMLElement)?.offsetWidth
+              }px 0`,
+              transition: "translate 250ms ease",
+            }}
+          >
+            {gallery.otherImages.map((el, i) => {
+              const type = el.substring(el.length, el.length - 3);
+              return type === "mp4" ? (
+                <VideoElement el={el} key={i} handleClick={handleChangeImage} />
+              ) : (
+                <ImageElement el={el} key={i} handleClick={handleChangeImage} />
+              );
+            })}
+          </div>
+        </div>
+
+        <button
+          className={styles.next}
+          onClick={toNext}
+          disabled={isLast}
+        ></button>
       </div>
     </div>
   );

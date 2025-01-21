@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Catalog from "../components/catalog/Catalog";
 
 const CatalogPage = () => {
@@ -5,3 +6,6 @@ const CatalogPage = () => {
 };
 
 export default CatalogPage;
+export const metadata: Metadata = {
+  title: "Каталог",
+};

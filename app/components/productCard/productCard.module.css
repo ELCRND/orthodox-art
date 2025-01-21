@@ -4,6 +4,7 @@
   padding-right: 70px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  column-gap: 70px;
 }
 
 .gallery {
