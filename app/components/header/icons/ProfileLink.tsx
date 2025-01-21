@@ -47,7 +47,7 @@ const ProfileLink = () => {
             </Link>
           )}
           {status === "authenticated" && (
-            <button onClick={() => signOut({ redirect: false })}>Выйти</button>
+            <button onClick={() => signOut({ redirectTo: "/" })}>Выйти</button>
           )}
         </div>
       )}

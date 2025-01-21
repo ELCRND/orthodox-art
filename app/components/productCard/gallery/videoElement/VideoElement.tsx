@@ -7,8 +7,8 @@ type Props = {
 
 const VideoElement = ({ el, handleClick }: Props) => {
   return (
-    <div className={styles.videoContainer} onClick={() => handleClick(el)}>
-      <video width={160} height={125}>
+    <div className={`${styles.videoContainer}`} onClick={() => handleClick(el)}>
+      <video width={150} height={125}>
         <source src={el} type="video/mp4" />
       </video>
     </div>

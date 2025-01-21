@@ -169,6 +169,12 @@
   background-color: transparent;
 }
 
+.passwordError {
+  font-size: 16px;
+  color: brown;
+  text-align: center;
+}
+
 @media screen and (max-width: 439px) {
   .content > button {
     width: 300px;

@@ -1,12 +1,13 @@
 .otherImages {
+  max-width: 650px;
   display: flex;
   align-items: center;
+  gap: 30px;
+  user-select: none;
 }
 
 .slider {
-  max-width: 650px;
   overflow: scroll;
-
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -21,7 +22,7 @@
 }
 
 .row > * {
-  width: 160px;
+  width: 150px;
   flex-shrink: 0;
   cursor: pointer;
 }
@@ -29,7 +30,7 @@
 .prev,
 .next {
   border: none;
-  background-color: transparent;
+  background-color: red;
   position: relative;
   cursor: pointer;
   transition: border-color 250ms ease;
@@ -58,6 +59,17 @@
   translate: 0 -50%;
 }
 
+.prev::after,
+.next::after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
 .prev::before {
   rotate: 45deg;
 }
@@ -66,8 +78,37 @@
   rotate: -135deg;
 }
 
+@media screen and (max-width: 1399px) {
+  .container {
+    max-width: 500px;
+  }
+}
 @media screen and (max-width: 1279px) {
   .container {
     max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 1079px) {
+  .container {
+    max-width: 510px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .otherImages {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    /* gap: 0; */
+  }
+  .slider {
+    max-width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .row > * {
+    width: 150px;
   }
 }

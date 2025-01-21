@@ -4,7 +4,8 @@
   padding-right: 70px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 70px;
+  column-gap: 150px;
+  overflow: hidden;
 }
 
 .gallery {
@@ -25,6 +26,18 @@
   font-size: 40px;
   line-height: 120%;
   color: var(--dark);
+  position: relative;
+}
+
+.text h1::before {
+  content: "";
+  width: 60px;
+  height: 5px;
+  background-color: var(--beige);
+  position: absolute;
+  top: 25%;
+  left: 0;
+  translate: -150% 0;
 }
 
 .text b {
@@ -130,4 +143,81 @@
 
 .counter button:active {
   background-color: transparent;
+}
+
+@media screen and (max-width: 1079px) {
+  .container {
+    padding-bottom: 150px;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+
+  .gallery {
+    grid-row: 1 / 2;
+  }
+
+  .text {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+
+  .accordions {
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+  }
+  .counterContainer {
+    grid-row: 4 / 5;
+    grid-column: 1 / 2;
+  }
+
+  .tabs {
+    grid-row: 5 / 6;
+    grid-column: 1 / 2;
+  }
+
+  .text h1 {
+    font-size: 36px;
+    text-align: center;
+  }
+  .text h1::before {
+    display: none;
+  }
+
+  .text b {
+    padding-left: 50px;
+    font-size: 24px;
+  }
+
+  .counterContainer {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .counterContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .text b {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .counterContainer > button {
+    width: 165px;
+  }
+
+  .text h1 {
+    margin-top: 24px;
+  }
 }

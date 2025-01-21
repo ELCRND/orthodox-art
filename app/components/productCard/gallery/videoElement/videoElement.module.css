@@ -1,4 +1,31 @@
 .videoContainer video {
-  height: 100%;
   object-fit: fill;
+}
+
+.videoContainer {
+  position: relative;
+}
+
+.videoContainer::before {
+  content: "";
+  width: 45px;
+  height: 45px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.videoContainer::after {
+  content: "";
+  width: 15px;
+  height: 20px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -40% -50%;
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
 }

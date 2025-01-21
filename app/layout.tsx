@@ -8,6 +8,7 @@ import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 // @ts-expect-error: Let's ignore a compile error like this unreachable code
 import { SessionProvider } from "next-auth/react";
+import BasketLayout from "./layouts/BasketLayout";
 
 const Montserrat = localFont({
   src: [
@@ -48,20 +49,22 @@ export default function RootLayout({
     <html lang="ru">
       <body className={`${Montserrat.className}`}>
         <SessionProvider>
-          <Header />
-          {children}
-          <Footer />
-          <ToastContainer
-            position="top-center"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            draggable
-            theme="dark"
-            transition={Zoom}
-          />
+          <BasketLayout>
+            <Header />
+            {children}
+            <Footer />
+            <ToastContainer
+              position="top-center"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              draggable
+              theme="dark"
+              transition={Zoom}
+            />
+          </BasketLayout>
         </SessionProvider>
       </body>
     </html>

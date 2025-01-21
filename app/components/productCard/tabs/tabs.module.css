@@ -52,6 +52,15 @@
   transition: opacity 400ms ease;
 }
 
+.tabWrapper span {
+  margin-top: 60px;
+  font-size: 14px;
+  line-height: 171%;
+  color: #000;
+  position: absolute;
+  left: 0;
+}
+
 .tabWrapper:has(:checked) p {
   opacity: 1;
 }
@@ -62,4 +71,14 @@
 .tabWrapper:has(:checked) label::before {
   width: 100%;
   left: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .tabs {
+    gap: 16px;
+  }
+  .tab {
+    font-size: 12px;
+    white-space: nowrap;
+  }
 }

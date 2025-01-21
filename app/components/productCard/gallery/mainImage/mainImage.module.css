@@ -24,9 +24,41 @@
   z-index: -1;
 }
 
+@media screen and (max-width: 1399px) {
+  .mainImage img,
+  .mainImage video {
+    max-width: 500px;
+    height: 500px;
+  }
+}
+
 @media screen and (max-width: 1279px) {
-  .mainImage img {
+  .mainImage img,
+  .mainImage video {
     max-width: 400px;
     height: 400px;
+  }
+}
+@media screen and (max-width: 1079px) {
+  .mainImage {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .mainImage {
+    margin-bottom: 20px;
+  }
+
+  .mainImage img,
+  .mainImage video {
+    max-width: 320px;
+    height: 320px;
+  }
+
+  .mainImage:before {
+    top: 10px;
+    left: 10px;
   }
 }

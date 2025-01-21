@@ -1,7 +1,7 @@
 export const authConfig = {
   providers: [],
   pages: {
-    signIn: "/login", // redirect & start
+    signIn: "/login",
   },
   callbacks: {},
 };

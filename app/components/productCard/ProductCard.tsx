@@ -1,14 +1,18 @@
 "use client";
-import { IProduct } from "@/types/index";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Accordion from "./accordion/Accordion";
 import Gallery from "./gallery/Gallery";
-import styles from "./productCard.module.css";
 import Tabs from "./tabs/Tabs";
+import { IProduct } from "@/types/index";
+
+import styles from "./productCard.module.css";
+import { BasketContext } from "@/app/layouts/BasketLayout";
 
 const ProductCard = ({ product }: { product?: IProduct }) => {
   const [count, setCount] = useState(1);
   const handleCount = (v: number) => setCount((p) => p + v);
+  const basket = useContext(BasketContext);
+  console.log(basket);
 
   return (
     <div className={styles.container}>

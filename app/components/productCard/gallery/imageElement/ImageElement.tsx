@@ -11,7 +11,7 @@ const ImageElement = ({ el, handleClick }: Props) => {
     <Image
       src={el}
       alt={el.split(".")[0]}
-      width={160}
+      width={150}
       height={125}
       onClick={() => handleClick(el)}
     />

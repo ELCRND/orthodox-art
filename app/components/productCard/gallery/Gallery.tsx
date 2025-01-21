@@ -30,26 +30,6 @@ const Gallery = ({ product }: { product: IProduct | undefined }) => {
     });
   };
 
-  // useEffect(() => {
-  //   try {
-  //     setLoading(true);
-  //     fetch(`/api/products/gallery?id=${product?._id}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setGallery((prev) => ({
-  //           ...prev,
-  //           otherImages: data.gallery.map(
-  //             (el: string) => `/products/extra/${el}`
-  //           ),
-  //         }));
-  //         setLoading(false);
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //     setLoading(false);
-  //   }
-  // }, [product?._id]);
-
   return (
     <div className={styles.container}>
       <MainImage path={gallery.mianImage} desc={product?.name || ""} />
@@ -95,3 +75,23 @@ const Gallery = ({ product }: { product: IProduct | undefined }) => {
 };
 
 export default Gallery;
+
+// useEffect(() => {
+//   try {
+//     setLoading(true);
+//     fetch(`/api/products/gallery?id=${product?._id}`)
+//       .then((res) => res.json())
+//       .then((data) => {
+//         setGallery((prev) => ({
+//           ...prev,
+//           otherImages: data.gallery.map(
+//             (el: string) => `/products/extra/${el}`
+//           ),
+//         }));
+//         setLoading(false);
+//       });
+//   } catch (error) {
+//     console.log(error);
+//     setLoading(false);
+//   }
+// }, [product?._id]);

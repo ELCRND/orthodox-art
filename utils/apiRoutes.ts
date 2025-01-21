@@ -1,4 +1,6 @@
 import { Db, MongoClient, ObjectId } from "mongodb";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export const clientPromise = MongoClient.connect(
   process.env.NEXT_PUBLIC_DB_URI as string,
@@ -57,7 +59,6 @@ export const getSomeProducts = async (
   end: number,
   filters: { stock: boolean; type?: string; material?: string }
 ) => {
-  console.log(filters, "!!!");
   const products = await db
     .collection("products")
     .find(filters)
@@ -66,4 +67,61 @@ export const getSomeProducts = async (
     .toArray();
 
   return products;
+};
+
+export const generateTokens = (email: string, role: string) => {
+  const accessToken = jwt.sign(
+    {
+      email,
+    },
+    process.env.NEXT_PUBLIC_ACCESS_TOKEN_KEY as string,
+    {
+      expiresIn: "10m",
+    }
+  );
+
+  const refreshToken = jwt.sign(
+    {
+      email,
+    },
+    process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY as string,
+    { expiresIn: "30d" }
+  );
+
+  return { accessToken, refreshToken };
+};
+
+export const findUserByEmail = async (db: Db, email: string) =>
+  db.collection("users").findOne({ email });
+
+export const createUserAndGenerateTokens = async (
+  db: Db,
+  reqBody: { email: string; password: string }
+) => {
+  const salt = bcrypt.genSaltSync(7);
+  const hash = bcrypt.hashSync(reqBody.password, salt);
+
+  await db.collection("users").insertOne({
+    email: reqBody.email,
+    password: hash,
+  });
+
+  return generateTokens(reqBody.email, "user");
+};
+
+export const getCollectionsBasket = async (db: Db, email: string) => {
+  const collectionBasket = await db.collection("basket").findOne({ email });
+  return collectionBasket;
+};
+
+export const createCollectionBasket = async (
+  db: Db,
+  email: string,
+  initial = []
+) => {
+  const basket = await db.collection("basket").insertOne({
+    email,
+    products: initial,
+  });
+  return basket;
 };

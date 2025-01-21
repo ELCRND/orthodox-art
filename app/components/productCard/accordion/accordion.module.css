@@ -111,3 +111,9 @@
 .textWrapper label.visible + button:before {
   display: none;
 }
+
+@media screen and (max-width: 1079px) {
+  .container {
+    margin-top: 12px;
+  }
+}
