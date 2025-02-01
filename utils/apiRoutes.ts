@@ -74,7 +74,7 @@ export const generateTokens = (email: string) => {
     {
       email,
     },
-    process.env.NEXT_PUBLIC_ACCESS_TOKEN_KEY as string,
+    process.env.ACCESS_TOKEN_KEY as string,
     {
       expiresIn: "10m",
     }
@@ -84,7 +84,7 @@ export const generateTokens = (email: string) => {
     {
       email,
     },
-    process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY as string,
+    process.env.REFRESH_TOKEN_KEY as string,
     { expiresIn: "30d" }
   );
 
