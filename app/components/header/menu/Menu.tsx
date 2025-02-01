@@ -26,12 +26,12 @@ const Menu = ({
           </Link>
         </li>
         <li>
-          <Link href={"#life"} onClick={() => handler()}>
+          <Link href={"/#life"} onClick={() => handler()}>
             Life
           </Link>
         </li>
         <li>
-          <Link href={"#contacts"} onClick={() => handler()}>
+          <Link href={"/#contacts"} onClick={() => handler()}>
             Контакты
           </Link>
         </li>

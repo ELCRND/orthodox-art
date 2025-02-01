@@ -30,7 +30,6 @@
 .prev,
 .next {
   border: none;
-  background-color: red;
   position: relative;
   cursor: pointer;
   transition: border-color 250ms ease;

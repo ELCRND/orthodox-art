@@ -7,11 +7,55 @@
   line-height: 114%;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.whatsApp::before {
+  content: "";
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  translate: -25% 0;
+}
+
+.whatsApp:hover {
+  overflow: visible;
+}
+
+.whatsApp:hover span {
+  width: 200px;
+  grid-template-columns: 1fr;
+}
+
+.whatsApp span {
+  width: 0;
+  height: 50px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 0fr;
+  place-content: center;
+  place-items: center;
+  white-space: nowrap;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  translate: -100% 25%;
+  transition: all 400ms ease;
 }
 
 .profile {
   position: relative;
 }
+
+.profile svg {
+  transition: scale 200ms ease;
+}
+.profile:hover svg {
+  scale: 1.2;
+}
+
 .profile svg {
   cursor: pointer;
 }

@@ -13,10 +13,10 @@ const Navigation = () => {
           <Link href={"/catalog"}>Каталог</Link>
         </li>
         <li>
-          <Link href={"#life"}>Life</Link>
+          <Link href={"/#life"}>Life</Link>
         </li>
         <li>
-          <Link href={"#contacts"}>Контакты</Link>
+          <Link href={"/#contacts"}>Контакты</Link>
         </li>
       </ul>
     </nav>

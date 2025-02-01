@@ -69,7 +69,7 @@ export const getSomeProducts = async (
   return products;
 };
 
-export const generateTokens = (email: string, role: string) => {
+export const generateTokens = (email: string) => {
   const accessToken = jwt.sign(
     {
       email,
@@ -106,12 +106,60 @@ export const createUserAndGenerateTokens = async (
     password: hash,
   });
 
-  return generateTokens(reqBody.email, "user");
+  return generateTokens(reqBody.email);
 };
 
 export const getCollectionsBasket = async (db: Db, email: string) => {
-  const collectionBasket = await db.collection("basket").findOne({ email });
-  return collectionBasket;
+  const ids = await db.collection("basket").findOne({ email });
+
+  if (ids === null) return Promise.resolve(null);
+
+  const products = await db
+    .collection("products")
+    .find({
+      _id: {
+        $in: ids.products.map((el: { id: number }) => new ObjectId(el.id)),
+      },
+    })
+    .toArray();
+
+  const updatedProduct = products.map((product) => {
+    const p = ids.products.find(
+      (el: { id: string }) => el.id === product._id.toString()
+    );
+
+    return {
+      ...product,
+      count: p?.count,
+      currentSize: p?.size,
+    };
+  });
+
+  return updatedProduct;
+};
+
+export const getUpdatedBasket = async (
+  db: Db,
+  email: string,
+  id: string,
+  count: number,
+  size: string
+) => {
+  const ids = await db.collection("basket").findOne({ email });
+
+  if (ids === null) return Promise.resolve(null);
+
+  const updateBasket = await db.collection("basket").findOneAndUpdate(
+    { email: email, "products.id": id },
+    { $set: { "products.$.count": count, "products.$.size": size } },
+    {
+      returnDocument: "after",
+    }
+  );
+
+  if (!updateBasket) return Promise.resolve(null);
+
+  return updateBasket.products;
 };
 
 export const createCollectionBasket = async (

@@ -1,18 +1,41 @@
 "use client";
-import { useContext, useState } from "react";
+import { useEffect } from "react";
 import Accordion from "./accordion/Accordion";
 import Gallery from "./gallery/Gallery";
 import Tabs from "./tabs/Tabs";
-import { IProduct } from "@/types/index";
+import AddProductBtn from "./addProductBtn/AddProductBtn";
+import { useProductToBasketStore } from "@/app/store/index";
+import { IBasket, IProduct } from "@/types/index";
 
 import styles from "./productCard.module.css";
-import { BasketContext } from "@/app/layouts/BasketLayout";
 
-const ProductCard = ({ product }: { product?: IProduct }) => {
-  const [count, setCount] = useState(1);
-  const handleCount = (v: number) => setCount((p) => p + v);
-  const basket = useContext(BasketContext);
-  console.log(basket);
+const ProductCard = ({
+  product,
+  basketFromDB,
+}: {
+  product: IProduct;
+  basketFromDB: IBasket[];
+}) => {
+  const { productCount, setProductCount, setProductSize } =
+    useProductToBasketStore();
+
+  const handleCount = (v: number) => {
+    setProductCount(productCount + v);
+  };
+
+  useEffect(() => {
+    if (basketFromDB) {
+      const productFromDB = basketFromDB?.find((el) => el._id === product._id);
+      setProductCount(productFromDB?.count || 1);
+      setProductSize(productFromDB?.currentSize || "");
+    } else {
+      const ls = JSON.parse(localStorage.getItem("basket")!) || [];
+      const productFromLS = ls.find((el: IBasket) => el._id === product._id);
+      console.log(productFromLS);
+      setProductCount(productFromLS?.count || 1);
+      setProductSize(productFromLS?.currentSize || null);
+    }
+  }, [basketFromDB, product._id, setProductCount, setProductSize]);
 
   return (
     <div className={styles.container}>
@@ -26,19 +49,19 @@ const ProductCard = ({ product }: { product?: IProduct }) => {
       </div>
 
       <div className={styles.accordions}>
-        <Accordion values={product?.size || []} text={"Размер"} />
+        <Accordion values={product.size} />
       </div>
 
       <div className={styles.counterContainer}>
         <div className={styles.counter}>
-          <button disabled={count <= 1} onClick={() => handleCount(-1)}>
+          <button disabled={productCount <= 1} onClick={() => handleCount(-1)}>
             -
           </button>
-          <span>{count}</span>
+          <span>{productCount}</span>
           <button onClick={() => handleCount(1)}>+</button>
         </div>
 
-        <button>В корзину</button>
+        <AddProductBtn product={product} />
       </div>
 
       <div className={styles.tabs}>

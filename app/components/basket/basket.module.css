@@ -3,3 +3,8 @@
   padding-left: 70px;
   padding-right: 70px;
 }
+
+.content {
+  display: grid;
+  gap: 20px;
+}

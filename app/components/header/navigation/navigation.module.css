@@ -2,6 +2,7 @@
   display: flex;
   gap: 50px;
   list-style: none;
+  translate: -10% 0;
 }
 
 .container > ul > li > a:before {
@@ -19,6 +20,12 @@
 .container > ul > li > a:hover:before {
   width: 100%;
   left: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .container > ul {
+    translate: 0 0;
+  }
 }
 
 @media screen and (max-width: 767px) {

@@ -81,6 +81,14 @@
   transition: background-color 200ms ease;
 }
 
+.counterContainer > button:disabled {
+  cursor: auto;
+  opacity: 0.5;
+}
+.counterContainer > button:disabled:hover {
+  background-color: transparent;
+}
+
 .counterContainer > button:hover {
   background-color: var(--beige);
 }

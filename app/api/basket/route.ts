@@ -20,6 +20,7 @@ export async function POST(req: NextRequest) {
   }
 
   const basket = await getCollectionsBasket(db, reqBody.email);
+
   if (!basket) {
     return NextResponse.json(createCollectionBasket(db, reqBody.email), {
       status: 201,

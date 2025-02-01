@@ -9,3 +9,8 @@ export interface IProduct {
   image: string;
   size: string[];
 }
+
+export interface IBasket extends IProduct {
+  count: number;
+  currentSize: string;
+}

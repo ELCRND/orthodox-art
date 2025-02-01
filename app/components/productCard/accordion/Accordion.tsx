@@ -1,24 +1,23 @@
+import { useProductToBasketStore } from "@/app/store/index";
 import { useState } from "react";
 import styles from "./accordion.module.css";
 
-const Accordion = ({ values, text }: { values: string[]; text: string }) => {
-  const [state, setState] = useState(text);
+const Accordion = ({ values }: { values: string[] }) => {
   const [open, setOpen] = useState(false);
+  const handleSize = (v: string) => {
+    setProductSize(v);
+  };
+  const { productSize, setProductSize } = useProductToBasketStore();
   return (
     <div className={styles.container}>
       <div className={`${styles.textWrapper}`}>
-        <label
-          htmlFor="select"
-          className={`${state === text ? styles.hidden : styles.visible}`}
-        >
-          {text}:
-        </label>
+        <label htmlFor="select">{"Размер"}:</label>
         <button
           id="select"
           onClick={() => setOpen((v) => !v)}
           className={`${open ? styles.open : ""}`}
         >
-          {state}
+          {productSize}
         </button>
       </div>
       <div className={`${styles.items} ${open ? styles.open : ""}`}>
@@ -29,7 +28,7 @@ const Accordion = ({ values, text }: { values: string[]; text: string }) => {
               <button
                 key={idx}
                 onClick={() => {
-                  setState(el);
+                  handleSize(el);
                   setOpen(false);
                 }}
               >

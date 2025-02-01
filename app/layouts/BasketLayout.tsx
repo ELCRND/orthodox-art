@@ -1,18 +1,17 @@
 "use client";
 // @ts-expect-error: Let's ignore a compile error like this unreachable code
 import { useSession } from "next-auth/react";
-import { createContext, useEffect, useState } from "react";
-
-export const BasketContext = createContext(null);
+import { useEffect } from "react";
+import { useBasketStore } from "../store/index";
 
 const BasketLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const [basket, setBasket] = useState(null);
-  const session = useSession();
+  const { setBasket, setBaskedIsLoading } = useBasketStore();
 
+  const session = useSession();
   useEffect(() => {
     if (session.data?.user?.email) {
       fetch(`/api/basket`, {
@@ -25,13 +24,16 @@ const BasketLayout = ({
           }
           return null;
         })
-        .then((data) => data && setBasket(data.products));
+        .then((data) => {
+          setBasket(data);
+        })
+        .finally(() => setBaskedIsLoading(false));
+    } else if (localStorage.getItem("basket")) {
+      setBasket(JSON.parse(localStorage.getItem("basket")!));
     }
-  }, [session.data?.user?.email]);
+  }, [session.data?.user?.email, setBaskedIsLoading, setBasket]);
 
-  return (
-    <BasketContext.Provider value={basket}>{children}</BasketContext.Provider>
-  );
+  return <>{children}</>;
 };
 
 export default BasketLayout;
