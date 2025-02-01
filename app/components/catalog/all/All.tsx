@@ -2,10 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import Filter from "./filter/Filter";
 import Products from "./products/Products";
-
-import styles from "./all.module.css";
 import { IProduct } from "@/types/index";
 import { toast, Zoom } from "react-toastify";
+import styles from "./all.module.css";
 
 const All = ({ data }: { data: IProduct[] }) => {
   const [products, setProducts] = useState<IProduct[]>(data);

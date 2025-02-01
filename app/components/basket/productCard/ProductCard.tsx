@@ -22,9 +22,11 @@ const ProductCard = ({ product, deleteOneFromDb }: Props) => {
         height={100}
         className={styles.img}
       />
+
       <h2 className={styles.title}>
         <Link href={`/product/${product._id}`}>{product.name}</Link>
       </h2>
+
       <div className={styles.count}>
         <span>Количество</span>
         <div>
@@ -36,14 +38,17 @@ const ProductCard = ({ product, deleteOneFromDb }: Props) => {
           <button onClick={() => changeCount(1)}></button>
         </div>
       </div>
+
       <div className={styles.size}>
         <span>Размер</span>
         <b>{product.currentSize}</b>
       </div>
+
       <div className={styles.material}>
         <span>Материал</span>
         <b>{product.material === "gold" ? "Золото" : "Серебро"}</b>
       </div>
+
       <div className={styles.total}>
         <span>Итого</span>
         <b>{(product.price * count).toLocaleString()} Р</b>

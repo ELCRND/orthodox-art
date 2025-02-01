@@ -11,7 +11,9 @@ const LargeProductCard = () => {
         width={430}
         height={365}
       />
-      <Link href={"/cataog#crosses"}>Крест из белого золота на шнурке</Link>
+      <Link href={"/product/675e9ed5fdee5ff6b2d4d37a"}>
+        Крест из белого золота на шнурке
+      </Link>
       <b>29 900 Р</b>
     </div>
   );

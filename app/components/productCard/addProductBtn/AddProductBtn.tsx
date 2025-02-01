@@ -9,7 +9,6 @@ const AddProductBtn = ({ product }: { product: IProduct }) => {
   const { basket, setBasket, basketIsLoading, setBaskedIsLoading } =
     useBasketStore();
   const { productCount, productSize } = useProductToBasketStore();
-  console.log(basket);
 
   const inBasket = () => basket?.find((el) => el._id === product._id);
 

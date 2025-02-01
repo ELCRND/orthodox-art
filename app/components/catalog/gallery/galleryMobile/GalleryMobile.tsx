@@ -30,38 +30,3 @@ const GalleryMobile = ({ imagesList }: GalleryProps) => {
 };
 
 export default GalleryMobile;
-
-{
-  /* <div className={styles.container}>
-      <div className={styles.mainImage}>
-        <Image
-          src={imagesList.main.path}
-          alt={imagesList.main.alt}
-          fill
-          sizes="100%"
-          id="0"
-        />
-      </div>
-      <div className={styles.otherImages}>
-        {imagesList.others.map((img, idx) => (
-          <div key={img.id} id={idx + 1 + ""}>
-            <Image
-              src={img.path}
-              alt={img.alt}
-              fill
-              sizes="100%"
-              draggable={false}
-            />
-          </div>
-        ))}
-      </div>
-      <div className={styles.indicators}>
-        {[0, 0, 0, 0].map((_, idx) => (
-          <span
-            key={idx}
-            className={`${idx === indicatorNum && styles.active}`}
-          ></span>
-        ))}
-      </div>{" "}
-    </div> */
-}
