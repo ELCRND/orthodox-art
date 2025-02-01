@@ -8,7 +8,6 @@ import {
 } from "@/utils/apiRoutes";
 
 export async function POST(req: Request) {
-  console.log(req);
   try {
     const { db, reqBody } = await getDbAndReqBody(clientPromise, req);
     const user = await findUserByEmail(db, reqBody.email);

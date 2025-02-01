@@ -8,7 +8,6 @@ export const useSliderIndicators = () => {
     const root = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // console.log(entry.target, entry.isIntersecting);
         if (entry.isIntersecting) setState(+entry.target.id);
       },
       {

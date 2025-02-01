@@ -31,7 +31,6 @@ const ProductCard = ({
     } else {
       const ls = JSON.parse(localStorage.getItem("basket")!) || [];
       const productFromLS = ls.find((el: IBasket) => el._id === product._id);
-      console.log(productFromLS);
       setProductCount(productFromLS?.count || 1);
       setProductSize(productFromLS?.currentSize || null);
     }

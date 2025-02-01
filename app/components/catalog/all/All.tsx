@@ -15,7 +15,6 @@ const All = ({ data }: { data: IProduct[] }) => {
   const ref = useRef(null);
 
   const loadProducts = async (filters: string) => {
-    console.log(filters.toString());
     setLoading(true);
     try {
       const newData = await fetch(

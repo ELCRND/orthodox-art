@@ -22,7 +22,6 @@ const Feedback = () => {
       <span>Пожалуйста укажите свой номер телефона и мы свяжемся с вами</span>
       <form
         action={(e) => {
-          console.log();
           notify(e.get("phone") as string);
         }}
       >
