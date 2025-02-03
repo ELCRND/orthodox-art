@@ -1,10 +1,78 @@
+.container.scrollOff {
+  max-height: 66vh;
+  overflow: hidden;
+}
 .container {
   padding-top: 240px;
   padding-left: 70px;
   padding-right: 70px;
+  position: relative;
+}
+
+.total {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+  font-size: 24px;
+}
+
+.total button {
+  width: 376px;
+  height: 54px;
+  background-color: #000;
+  border: 1px solid #080808;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+
+.total button:hover {
+  opacity: 0.75;
+}
+.total button:active {
+  opacity: 1;
 }
 
 .content {
   display: grid;
   gap: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .total {
+    margin-bottom: 20px;
+    gap: 12px;
+    font-size: 18px;
+    flex-direction: column;
+  }
+
+  .total button {
+    width: 100%;
+    max-width: 375px;
+    height: 54px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .container.scrollOff {
+    max-height: 130vh;
+  }
+}
+@media screen and (max-width: 767) {
+  .container.scrollOff {
+    max-height: 153vh;
+  }
 }

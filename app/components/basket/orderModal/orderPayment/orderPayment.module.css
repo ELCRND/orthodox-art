@@ -1,0 +1,45 @@
+.container {
+  padding: 40px;
+  display: grid;
+  gap: 24px;
+}
+
+.title {
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 156%;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #1e252c;
+}
+
+.radio {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.radio input {
+  accent-color: #000;
+}
+
+@media screen and (max-width: 1279px) {
+  .container {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .radio {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+}

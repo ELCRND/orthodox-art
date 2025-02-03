@@ -98,6 +98,28 @@
   cursor: pointer;
 }
 
+.cart {
+  position: relative;
+}
+.cart div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  translate: 50% -50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #f00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: none;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+  line-height: 120%;
+}
+
 @media screen and (max-width: 767px) {
   .profileWindow {
     translate: 0 100%;

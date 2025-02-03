@@ -1,20 +1,28 @@
+import { useBasketStore } from "@/app/store/index";
 import { IBasket } from "@/types/index";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 import styles from "./productCard.module.css";
 
 type Props = {
   product: IBasket;
   deleteOneFromDb: (id: string) => Promise<void>;
+  register: UseFormRegister<FieldValues>;
 };
 
-const ProductCard = ({ product, deleteOneFromDb }: Props) => {
-  const [count, setCount] = useState(product.count);
-  const changeCount = (v: number) => setCount((p) => p + v);
+const ProductCard = ({ product, deleteOneFromDb, register }: Props) => {
+  const { basket, setBasket } = useBasketStore();
+  const changeCount = (v: number) =>
+    setBasket(
+      basket.map((el) =>
+        el._id === product._id ? { ...el, count: (el.count += v) } : el
+      )
+    );
 
   return (
     <div className={styles.container}>
+      <input type="text" {...register(product._id)} />
       <Image
         src={`/products/${product.type}/${product.image}`}
         alt={""}
@@ -31,11 +39,12 @@ const ProductCard = ({ product, deleteOneFromDb }: Props) => {
         <span>Количество</span>
         <div>
           <button
-            disabled={count <= 1}
+            type="button"
+            disabled={product.count <= 1}
             onClick={() => changeCount(-1)}
           ></button>
-          <b>{count}</b>
-          <button onClick={() => changeCount(1)}></button>
+          <b>{product.count}</b>
+          <button type="button" onClick={() => changeCount(1)}></button>
         </div>
       </div>
 
@@ -51,7 +60,7 @@ const ProductCard = ({ product, deleteOneFromDb }: Props) => {
 
       <div className={styles.total}>
         <span>Итого</span>
-        <b>{(product.price * count).toLocaleString()} Р</b>
+        <b>{(product.price * product.count).toLocaleString()} Р</b>
       </div>
 
       <button

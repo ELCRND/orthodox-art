@@ -47,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${Montserrat.className}`}>
+      <body className={`${Montserrat.className} `}>
         <SessionProvider>
           <BasketLayout>
             <Header />

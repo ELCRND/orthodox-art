@@ -1,8 +1,12 @@
+import { useBasketStore } from "@/app/store/index";
 import Link from "next/link";
+import styles from "./icons.module.css";
 
 const CartLink = () => {
+  const { getCount } = useBasketStore();
+  const count = getCount();
   return (
-    <Link href={"/basket"}>
+    <Link href={"/basket"} className={styles.cart}>
       <svg
         width="24"
         height="24"
@@ -30,6 +34,7 @@ const CartLink = () => {
           </clipPath>
         </defs>
       </svg>
+      {count > 0 && <div>{count > 9 ? 9 + "+" : count}</div>}
     </Link>
   );
 };
