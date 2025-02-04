@@ -72,7 +72,7 @@ const Login = () => {
           </span>
           <span>Continue with Google</span>
         </button>
-        <button disabled={true}>
+        <button onClick={() => signIn("yandex", { redirectTo: "/" })}>
           <span>
             <Image src={"/yandex.svg"} alt="yandex" width={22} height={22} />
           </span>

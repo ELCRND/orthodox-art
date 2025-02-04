@@ -3,6 +3,8 @@ import NextAuth, { AuthError } from "next-auth";
 // @ts-expect-error: Let's ignore a compile error like this unreachable code
 import Google from "next-auth/providers/google";
 // @ts-expect-error: Let's ignore a compile error like this unreachable code
+import Yandex from "next-auth/providers/yandex";
+// @ts-expect-error: Let's ignore a compile error like this unreachable code
 import Credentials from "next-auth/providers/credentials";
 // import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { authConfig } from "./authconfig";
@@ -23,6 +25,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
   providers: [
     Google,
+    Yandex,
     Credentials({
       name: "Credentials",
       id: "credentials",
