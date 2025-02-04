@@ -1,7 +1,7 @@
 "use client";
-import { useSlider } from "@/app/hooks/useSlider";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useSlider } from "@/app/hooks/useSlider";
 import Video from "./video/Video";
 
 import styles from "./life.module.css";

@@ -1,9 +1,9 @@
 "use client";
 import ProductCard from "./productCard/ProductCard";
+import { useCurrentSearchParams } from "@/app/hooks/useCurrentSearchParams";
 import { IProduct } from "../../../../../types";
 
 import styles from "./products.module.css";
-import { useCurrentSearchParams } from "@/app/hooks/useCurrentSearchParams";
 
 type Props = {
   products: IProduct[];

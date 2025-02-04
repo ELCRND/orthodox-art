@@ -1,5 +1,4 @@
 "use client";
-// import { useSlider } from "@/app/hooks/useSlider";
 import { useSlider } from "@/app/hooks/useSlider";
 import BannerSlide from "./bannerSlide/BannerSlide";
 

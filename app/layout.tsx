@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+// @ts-expect-error: Let's ignore a compile error like this unreachable code
+import { SessionProvider } from "next-auth/react";
 import localFont from "next/font/local";
 import { ToastContainer, Zoom } from "react-toastify";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-
-import "./globals.css";
-import "react-toastify/dist/ReactToastify.css";
-// @ts-expect-error: Let's ignore a compile error like this unreachable code
-import { SessionProvider } from "next-auth/react";
 import BasketLayout from "./layouts/BasketLayout";
+
+import "react-toastify/dist/ReactToastify.css";
+import "./globals.css";
 
 const Montserrat = localFont({
   src: [

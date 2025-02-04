@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import styles from "./pendants.module.css";
 
 const Pendants = () => {

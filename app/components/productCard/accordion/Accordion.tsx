@@ -1,5 +1,6 @@
-import { useProductToBasketStore } from "@/app/store/index";
 import { useState } from "react";
+import { useProductToBasketStore } from "@/app/store/index";
+
 import styles from "./accordion.module.css";
 
 const Accordion = ({ values }: { values: string[] }) => {

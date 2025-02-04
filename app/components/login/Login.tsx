@@ -1,12 +1,13 @@
 "use client";
 
-// @ts-expect-error: Let's ignore a compile error like this unreachable code
-import { signIn } from "next-auth/react";
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+// @ts-expect-error: Let's ignore a compile error like this unreachable code
+import { signIn } from "next-auth/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+
 import styles from "./login.module.css";
 
 type Inputs = {

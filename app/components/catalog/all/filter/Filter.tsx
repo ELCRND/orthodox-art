@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { filterItemsList } from "@/app/catalog/data";
+import { useCurrentSearchParams } from "@/app/hooks/useCurrentSearchParams";
 import LeftFilter from "./leftFilter/LeftFilter";
 import CenterFilter from "./centerFilter/CenterFilter";
 import RightFilter from "./rightFilter/RightFilter";
 import Accordion from "../../../accordion/Accordion";
 import Label from "./label/Label";
 import Input from "./input/Input";
-import { filterItemsList } from "@/app/catalog/data";
 
 import styles from "./filter.module.css";
-import { useCurrentSearchParams } from "@/app/hooks/useCurrentSearchParams";
 
 type Props = {
   loadProducts: (

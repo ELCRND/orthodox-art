@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import styles from "./orderPayment.module.css";
 
 const OrderPayment = () => {

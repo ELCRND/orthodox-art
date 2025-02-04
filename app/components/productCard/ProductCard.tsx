@@ -43,8 +43,8 @@ const ProductCard = ({
       </div>
 
       <div className={styles.text}>
-        <h1>{product?.name}</h1>
-        <b>{product?.price.toLocaleString()} Р</b>
+        <h1>{product.name}</h1>
+        <b>{(product.price / 10).toLocaleString()} Р</b>
       </div>
 
       <div className={styles.accordions}>

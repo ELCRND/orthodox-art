@@ -1,8 +1,9 @@
-import { useBasketStore } from "@/app/store/index";
-import { IBasket } from "@/types/index";
 import Image from "next/image";
 import Link from "next/link";
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { useBasketStore } from "@/app/store/index";
+import { IBasket } from "@/types/index";
+
 import styles from "./productCard.module.css";
 
 type Props = {
@@ -60,7 +61,7 @@ const ProductCard = ({ product, deleteOneFromDb, register }: Props) => {
 
       <div className={styles.total}>
         <span>Итого</span>
-        <b>{(product.price * product.count).toLocaleString()} Р</b>
+        <b>{((product.price / 10) * product.count).toLocaleString()} Р</b>
       </div>
 
       <button

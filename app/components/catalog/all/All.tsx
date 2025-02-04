@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { toast, Zoom } from "react-toastify";
 import Filter from "./filter/Filter";
 import Products from "./products/Products";
 import { IProduct } from "@/types/index";
-import { toast, Zoom } from "react-toastify";
 import styles from "./all.module.css";
 
 const All = ({ data }: { data: IProduct[] }) => {

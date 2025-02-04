@@ -1,6 +1,6 @@
 "use client";
-import { useSlider } from "@/app/hooks/useSlider";
 import Image from "next/image";
+import { useSlider } from "@/app/hooks/useSlider";
 
 const Slider = () => {
   const { slideIdex } = useSlider(6);

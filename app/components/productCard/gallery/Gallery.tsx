@@ -1,10 +1,11 @@
-import { useSlider } from "@/app/hooks/useSlider";
-import { IProduct } from "@/types/index";
 import { useRef, useState } from "react";
-import styles from "./gallery.module.css";
+import { useSlider } from "@/app/hooks/useSlider";
 import ImageElement from "./imageElement/ImageElement";
 import MainImage from "./mainImage/MainImage";
 import VideoElement from "./videoElement/VideoElement";
+import { IProduct } from "@/types/index";
+
+import styles from "./gallery.module.css";
 
 const Gallery = ({ product }: { product: IProduct | undefined }) => {
   const [gallery, setGallery] = useState({

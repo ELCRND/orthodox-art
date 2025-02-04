@@ -1,0 +1,44 @@
+.img {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  z-index: 0;
+}
+
+.img::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 30px;
+  left: 30px;
+  width: 100%;
+  height: 100%;
+  border: 5px solid var(--beige);
+  background-color: transparent;
+}
+
+@media screen and (max-width: 1279px) {
+  .img {
+    grid-row: 1 / 2;
+  }
+
+  .img img {
+    width: 500px;
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .img img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .img::before {
+    top: 10px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--beige);
+  }
+}

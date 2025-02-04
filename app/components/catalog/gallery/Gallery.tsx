@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import GalleryDesktop from "./galleryDesktop/GalleryDesktop";
 import { useWindowSize } from "@/app/hooks/useWindowSize";
+import GalleryDesktop from "./galleryDesktop/GalleryDesktop";
 import GalleryMobile from "./galleryMobile/GalleryMobile";
 
 type Image = {

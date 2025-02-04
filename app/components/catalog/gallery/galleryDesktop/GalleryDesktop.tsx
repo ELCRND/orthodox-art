@@ -1,5 +1,5 @@
-import Image from "next/image";
 import React, { useState } from "react";
+import Image from "next/image";
 import { GalleryProps } from "../Gallery";
 
 import styles from "./galleryDesktop.module.css";

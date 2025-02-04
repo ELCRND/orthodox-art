@@ -1,13 +1,14 @@
 "use client";
-import { useBasketStore } from "@/app/store/index";
+import { useState } from "react";
 // @ts-expect-error: Let's ignore a compile error like this unreachable code
 import { useSession } from "next-auth/react";
-import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import styles from "./basket.module.css";
-import OrderModal from "./orderModal/OrderModal";
+import { useBasketStore } from "@/app/store/index";
 import ProductCard from "./productCard/ProductCard";
+import OrderModal from "./orderModal/OrderModal";
+
+import styles from "./basket.module.css";
 
 type Inputs = { [key: string]: string };
 
@@ -41,11 +42,13 @@ const Basket = () => {
   return (
     <div className={`${styles.container} ${open ? styles.scrollOff : ""}`}>
       {open && <OrderModal closeModal={() => setOpen(false)} />}
+
       <div className={styles.total}>
         <span>Итого: </span>
         <b>{getTotal().toLocaleString()}</b>
         <button form="basketForm">оформить заказ</button>
       </div>
+
       <form
         id="basketForm"
         className={styles.content}

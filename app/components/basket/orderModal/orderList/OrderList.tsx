@@ -1,9 +1,11 @@
-import { useBasketStore } from "@/app/store/index";
 import Image from "next/image";
+import { useBasketStore } from "@/app/store/index";
+
 import styles from "./orderList.module.css";
 
 const OrderList = () => {
   const { basket, getTotal } = useBasketStore();
+
   return (
     <div className={styles.container}>
       <h3 className={styles.title}>ваш заказ</h3>
@@ -17,7 +19,7 @@ const OrderList = () => {
               height={76}
             />
             <h4>{product.name}</h4>
-            <b>{product.price.toLocaleString()} Р</b>
+            <b>{(product.price / 10).toLocaleString()} Р</b>
           </li>
         ))}
       </ul>

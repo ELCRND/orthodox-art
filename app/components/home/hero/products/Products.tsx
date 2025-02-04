@@ -14,6 +14,9 @@ const Products = ({ ref }: { ref: RefObject<HTMLDivElement> }) => {
         sizes="100%"
         draggable={false}
         className={styles.bg}
+        priority={true}
+        loading="eager"
+        fetchPriority="high"
       />
       <Link href={"/catalog"} className={styles.link}>
         Изделия

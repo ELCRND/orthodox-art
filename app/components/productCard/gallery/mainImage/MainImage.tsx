@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import styles from "./mainImage.module.css";
 
 const MainImage = ({ path, desc }: { path: string; desc: string }) => {

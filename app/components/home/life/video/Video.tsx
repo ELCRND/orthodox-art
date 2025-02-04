@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+
 import styles from "./video.module.css";
 
 const Video = ({

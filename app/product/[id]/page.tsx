@@ -1,6 +1,5 @@
 import ProductCard from "@/app/components/productCard/ProductCard";
 import { auth } from "@/auth";
-import React from "react";
 
 const ProductCardPage = async ({
   params,

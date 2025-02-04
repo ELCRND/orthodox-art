@@ -14,6 +14,9 @@ const Production = ({ ref }: { ref: RefObject<HTMLDivElement> }) => {
         sizes="100%"
         draggable={false}
         className={styles.bg}
+        priority={true}
+        loading="eager"
+        fetchPriority="high"
       />
       <Link href={"/about"} className={styles.link}>
         ПРОИЗВОДСТВО

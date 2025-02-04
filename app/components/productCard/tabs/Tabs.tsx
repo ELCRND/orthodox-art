@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import styles from "./tabs.module.css";
 
 const Tabs = ({ id }: { id: string }) => {

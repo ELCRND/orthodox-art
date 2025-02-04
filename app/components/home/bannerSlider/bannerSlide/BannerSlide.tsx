@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import styles from "./bannerSlide.module.css";
 
 type Props = {
@@ -15,7 +16,7 @@ const BannerSlide = ({ ...product }: Props) => {
       <div className={styles.content}>
         <h2>{product.name}</h2>
         <p>{product.desc}</p>
-        <b>{product.price.toLocaleString("ru")} Р</b>
+        <b>{(product.price / 10).toLocaleString("ru")} Р</b>
       </div>
 
       <Image

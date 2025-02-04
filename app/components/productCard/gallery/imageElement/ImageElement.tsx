@@ -1,5 +1,4 @@
 import Image from "next/image";
-// import styles from "./imageElement.module.css";
 
 type Props = {
   el: string;

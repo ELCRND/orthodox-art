@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import styles from "./crosses.module.css";
 
 const Crosses = () => {
