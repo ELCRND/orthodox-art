@@ -1,8 +1,8 @@
-import { useBasketStore, useProductToBasketStore } from "@/app/store/index";
-import { IProduct } from "@/types/index";
 // @ts-expect-error: Let's ignore a compile error like this unreachable code
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
+import { useBasketStore, useProductToBasketStore } from "@/app/store/index";
+import { IProduct } from "@/types/index";
 
 const AddProductBtn = ({ product }: { product: IProduct }) => {
   const { data } = useSession();
