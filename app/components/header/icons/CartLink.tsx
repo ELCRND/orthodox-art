@@ -2,11 +2,15 @@ import { useBasketStore } from "@/app/store/index";
 import Link from "next/link";
 import styles from "./icons.module.css";
 
-const CartLink = () => {
+type Props = {
+  handler: () => void;
+};
+
+const CartLink = ({ handler }: Props) => {
   const { getCount } = useBasketStore();
   const count = getCount();
   return (
-    <Link href={"/basket"} className={styles.cart}>
+    <Link href={"/basket"} className={styles.cart} onClick={handler}>
       <svg
         width="24"
         height="24"

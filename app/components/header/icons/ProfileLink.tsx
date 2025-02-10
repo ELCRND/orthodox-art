@@ -5,7 +5,11 @@ import { signOut, useSession } from "next-auth/react";
 
 import styles from "./icons.module.css";
 
-const ProfileLink = () => {
+type Props = {
+  handler: () => void;
+};
+
+const ProfileLink = ({ handler }: Props) => {
   const [open, setOpen] = useState(false);
   const { status } = useSession();
 
@@ -41,7 +45,10 @@ const ProfileLink = () => {
           {status === "loading" ? (
             <span>Подождите</span>
           ) : (
-            <Link href={status === "authenticated" ? "/profile" : "/login"}>
+            <Link
+              href={status === "authenticated" ? "/profile" : "/login"}
+              onClick={handler}
+            >
               {status === "authenticated" ? "Профиль" : "Войти"}
             </Link>
           )}

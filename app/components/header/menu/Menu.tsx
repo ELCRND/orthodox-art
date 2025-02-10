@@ -26,8 +26,8 @@ const Menu = ({ isOpen, handler, routes }: Props) => {
       </ul>
 
       <div className={styles.links}>
-        <CartLink />
-        <ProfileLink />
+        <CartLink handler={handler} />
+        <ProfileLink handler={handler} />
       </div>
 
       <div className={styles.whatsApp}>
