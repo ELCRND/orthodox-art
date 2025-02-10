@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FieldValues, UseFormRegister } from "react-hook-form";
+
 import { useBasketStore } from "@/app/store/index";
+
 import { IBasket } from "@/types/index";
 
 import styles from "./productCard.module.css";
@@ -67,6 +69,7 @@ const ProductCard = ({ product, deleteOneFromDb, register }: Props) => {
       <button
         onClick={() => deleteOneFromDb(product._id)}
         className={styles.delete}
+        type="button"
       ></button>
     </div>
   );

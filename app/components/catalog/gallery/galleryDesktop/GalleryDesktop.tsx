@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+
 import { GalleryProps } from "../Gallery";
 
 import styles from "./galleryDesktop.module.css";
@@ -27,6 +28,7 @@ const GalleryDesktop = ({ imagesList }: GalleryProps) => {
           id="0"
         />
       </div>
+
       <div className={styles.otherImages}>
         {gallery.others.map((img, idx) => (
           <button

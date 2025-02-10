@@ -3,15 +3,19 @@ import { create } from "zustand";
 
 type BasketStore = {
   basket: IBasket[];
+  fromDb: boolean;
   setBasket: (newData: IBasket[]) => void;
+  setFromDb: (v: boolean) => void;
   basketIsLoading: boolean;
   setBaskedIsLoading: (v: boolean) => void;
   getCount: () => number;
   getTotal: () => number;
+  getById: (id: string) => IBasket | undefined;
 };
 
 export const useBasketStore = create<BasketStore>()((set, get) => ({
   basket: [],
+  fromDb: false,
   basketIsLoading: false,
   getCount: () => get().basket.length,
   getTotal: () =>
@@ -20,7 +24,9 @@ export const useBasketStore = create<BasketStore>()((set, get) => ({
       0
     ),
   setBasket: (v) => set(() => ({ basket: v })),
+  setFromDb: (v) => set(() => ({ fromDb: v })),
   setBaskedIsLoading: (v) => set(() => ({ basketIsLoading: v })),
+  getById: (id) => get().basket.find((el) => el._id === id),
 }));
 
 type ProductToBasket = {

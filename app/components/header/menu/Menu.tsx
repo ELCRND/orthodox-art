@@ -1,40 +1,28 @@
 import Link from "next/link";
+
 import CartLink from "../icons/CartLink";
 import ProfileLink from "../icons/ProfileLink";
 import WhatsAppLink from "../icons/WhatsAppLink";
 
 import styles from "./menu.module.css";
 
-const Menu = ({
-  isOpen,
-  handler,
-}: {
+type Props = {
   isOpen: boolean;
   handler: () => void;
-}) => {
+  routes: { path: string; text: string }[];
+};
+
+const Menu = ({ isOpen, handler, routes }: Props) => {
   return (
     <div className={`${styles.container} ${isOpen && styles.open}`}>
       <ul className={styles.navigation}>
-        <li>
-          <Link href={"/about"} onClick={() => handler()}>
-            Мастер
-          </Link>
-        </li>
-        <li>
-          <Link href={"/catalog"} onClick={() => handler()}>
-            Каталог
-          </Link>
-        </li>
-        <li>
-          <Link href={"/#life"} onClick={() => handler()}>
-            Life
-          </Link>
-        </li>
-        <li>
-          <Link href={"/#contacts"} onClick={() => handler()}>
-            Контакты
-          </Link>
-        </li>
+        {routes.map((r) => (
+          <li key={r.path}>
+            <Link href={r.path} onClick={() => handler()}>
+              {r.text}
+            </Link>
+          </li>
+        ))}
       </ul>
 
       <div className={styles.links}>

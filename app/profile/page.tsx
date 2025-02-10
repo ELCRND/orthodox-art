@@ -1,7 +1,8 @@
-import { auth } from "@/auth";
-import { Metadata } from "next";
-import { redirect } from "next/navigation";
 import React from "react";
+import { Metadata } from "next";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+
 import Profile from "../components/profile/Profile";
 
 const ProfilePage = async () => {

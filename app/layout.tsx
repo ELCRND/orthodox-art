@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-// @ts-expect-error: Let's ignore a compile error like this unreachable code
+//@ts-expect-error Next.js does not yet correctly use the `package.json#exports` field
 import { SessionProvider } from "next-auth/react";
 import localFont from "next/font/local";
 import { ToastContainer, Zoom } from "react-toastify";

@@ -1,6 +1,5 @@
 import { Db, MongoClient, ObjectId } from "mongodb";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 
 export const clientPromise = MongoClient.connect(
   process.env.NEXT_PUBLIC_DB_URI as string,
@@ -13,14 +12,19 @@ export const getDbAndReqBody = async (
   clientPromise: Promise<MongoClient>,
   req: Request | null
 ) => {
-  const db = (await clientPromise).db(process.env.NEXT_PUBLIC_DB_NAME);
+  try {
+    const db = (await clientPromise).db(process.env.NEXT_PUBLIC_DB_NAME);
 
-  if (req) {
-    const reqBody = await req.json();
-    return { db, reqBody };
+    if (req) {
+      const reqBody = await req.json();
+      return { db, reqBody };
+    }
+
+    return { db };
+  } catch (error) {
+    console.error("Error in getDbAndReqBody:", error);
+    throw error;
   }
-
-  return { db };
 };
 
 export const getProducts = async (db: Db) => {
@@ -69,44 +73,44 @@ export const getSomeProducts = async (
   return products;
 };
 
-export const generateTokens = (email: string) => {
-  const accessToken = jwt.sign(
-    {
-      email,
-    },
-    process.env.ACCESS_TOKEN_KEY as string,
-    {
-      expiresIn: "10m",
-    }
-  );
+// export const generateTokens = (email: string) => {
+//   const accessToken = jwt.sign(
+//     {
+//       email,
+//     },
+//     process.env.ACCESS_TOKEN_KEY as string,
+//     {
+//       expiresIn: "10m",
+//     }
+//   );
 
-  const refreshToken = jwt.sign(
-    {
-      email,
-    },
-    process.env.REFRESH_TOKEN_KEY as string,
-    { expiresIn: "30d" }
-  );
+//   const refreshToken = jwt.sign(
+//     {
+//       email,
+//     },
+//     process.env.REFRESH_TOKEN_KEY as string,
+//     { expiresIn: "30d" }
+//   );
 
-  return { accessToken, refreshToken };
-};
+//   return { accessToken, refreshToken };
+// };
 
 export const findUserByEmail = async (db: Db, email: string) =>
   db.collection("users").findOne({ email });
 
-export const createUserAndGenerateTokens = async (
+export const createUser = async (
   db: Db,
   reqBody: { email: string; password: string }
 ) => {
   const salt = bcrypt.genSaltSync(7);
   const hash = bcrypt.hashSync(reqBody.password, salt);
 
-  await db.collection("users").insertOne({
+  const result = await db.collection("users").insertOne({
     email: reqBody.email,
     password: hash,
   });
 
-  return generateTokens(reqBody.email);
+  return result.insertedId;
 };
 
 export const getCollectionsBasket = async (db: Db, email: string) => {

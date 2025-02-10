@@ -1,9 +1,14 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { toast, Zoom } from "react-toastify";
-import Filter from "./filter/Filter";
+
 import Products from "./products/Products";
+import Filter from "./filter/Filter";
+
+import { loadProductsByFilters } from "./utils/loadProductsByFilters";
+import { loadMoreProducts } from "./utils/loadMoreProducts";
+
 import { IProduct } from "@/types/index";
+
 import styles from "./all.module.css";
 
 const All = ({ data }: { data: IProduct[] }) => {
@@ -13,58 +18,28 @@ const All = ({ data }: { data: IProduct[] }) => {
   const [finished, setFinished] = useState(false);
   const ref = useRef(null);
 
-  const loadProducts = async (filters: string) => {
+  const handleLoadProductsByFilters = async (filters: string) => {
     setLoading(true);
-    try {
-      const newData = await fetch(
-        `/api/products/some?start=${0}&end=${5}&${filters.toString()}`
-      );
-
-      const newProducts = await newData.json();
-      setProducts(newProducts);
-      setFinished(false);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
+    const newProducts = await loadProductsByFilters(filters);
+    setProducts(newProducts);
+    setFinished(false);
+    setLoading(false);
   };
 
-  const loadMoreProducts = async (
+  const handleLoadMoreProducts = async (
     filters: string,
     start?: number,
     end?: number
   ) => {
     setLoading(true);
-    try {
-      const updateData = await fetch(
-        `/api/products/some?start=${start || 0}&end=${
-          end || 5
-        }&${filters.toString()}`
-      );
+    const result = await loadMoreProducts(filters, start, end);
 
-      if (updateData.statusText === "finished") {
-        toast(`Вы просмотрели все товары данного типа`, {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "dark",
-          transition: Zoom,
-        });
-        setFinished(true);
-      } else {
-        const newProducts = await updateData.json();
-        setProducts((p) => [...p, ...newProducts]);
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
+    if (result === "finished") {
+      setFinished(true);
+    } else {
+      setProducts((p) => [...p, ...result]);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -87,10 +62,10 @@ const All = ({ data }: { data: IProduct[] }) => {
   return (
     <div className={styles.container}>
       <div ref={ref} className={styles.anchor}></div>
-      <Filter isSticky={isSticky} loadProducts={loadProducts} />
+      <Filter isSticky={isSticky} loadProducts={handleLoadProductsByFilters} />
       <Products
         products={products}
-        loadProducts={loadMoreProducts}
+        loadProducts={handleLoadMoreProducts}
         loading={loading}
         finished={finished}
       />

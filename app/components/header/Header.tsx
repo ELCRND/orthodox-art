@@ -4,6 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+
 import CartLink from "./icons/CartLink";
 import ProfileLink from "./icons/ProfileLink";
 import WhatsAppLink from "./icons/WhatsAppLink";
@@ -13,9 +14,16 @@ import MenuBtn from "./menuBtn/MenuBtn";
 
 import styles from "./header.module.css";
 
+const routes = [
+  { path: "/about", text: "Мастер" },
+  { path: "/catalog", text: "Каталог" },
+  { path: "/#life", text: "Life" },
+  { path: "/#contacts", text: "Контакты" },
+];
+
 const Header = () => {
-  const [state, setState] = useState(false);
-  const handler = () => setState((p) => !p);
+  const [opeMenu, setOpenMenu] = useState(false);
+  const handler = () => setOpenMenu((p) => !p);
   const isHome = usePathname() === "/";
 
   return (
@@ -30,7 +38,7 @@ const Header = () => {
       </Link>
 
       <div className={styles.navigation}>
-        <Navigation />
+        <Navigation routes={routes} />
       </div>
 
       <div className={styles.links}>
@@ -39,7 +47,7 @@ const Header = () => {
         <ProfileLink />
       </div>
 
-      <Menu isOpen={state} handler={handler} />
+      <Menu isOpen={opeMenu} handler={handler} routes={routes} />
       <MenuBtn handler={handler} />
     </header>
   );

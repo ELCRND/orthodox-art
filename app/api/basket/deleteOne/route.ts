@@ -7,7 +7,14 @@ export async function POST(req: Request) {
     const { db, reqBody } = await getDbAndReqBody(clientPromise, req);
     const { email, id } = reqBody;
 
-    await db.collection("basket").updateOne(
+    if (!email || !id) {
+      return NextResponse.json(
+        { errorMessage: "Email and id product are required" },
+        { status: 400 }
+      );
+    }
+
+    const result = await db.collection("basket").updateOne(
       { email },
       {
         $pull: {
@@ -16,8 +23,19 @@ export async function POST(req: Request) {
       }
     );
 
+    if (!result) {
+      return NextResponse.json(
+        { errorMessage: "Failed to delete product from basket" },
+        { status: 500 }
+      );
+    }
+
     return NextResponse.json({ status: 200 });
   } catch (error) {
-    throw new Error((error as Error).message);
+    console.error("Error in POST /api/basket/deleteOne:", error);
+    return NextResponse.json(
+      { errorMessage: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

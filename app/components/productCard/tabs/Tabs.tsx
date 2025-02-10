@@ -15,6 +15,13 @@ const Tabs = ({ id }: { id: string }) => {
     fetch(`/api/products/about?id=${id}`)
       .then((res) => res.json())
       .then((data) => setAbout(data))
+      .catch(() => {
+        setAbout({
+          description: "not found",
+          quaranties: "not found",
+          care: "not found",
+        });
+      })
       .finally(() => setLoading(false));
   }, [id]);
 

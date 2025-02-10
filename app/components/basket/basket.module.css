@@ -40,6 +40,14 @@
   opacity: 1;
 }
 
+.total button:disabled {
+  opacity: 0.75;
+  cursor: auto;
+}
+.total button:disabled:hover {
+  opacity: 0.75;
+}
+
 .content {
   display: grid;
   gap: 20px;

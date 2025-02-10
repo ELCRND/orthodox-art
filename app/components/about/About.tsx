@@ -1,5 +1,6 @@
 import AboutImage from "./aboutImage/AboutImage";
 import AboutText from "./aboutText/AboutText";
+
 import styles from "./about.module.css";
 
 const data = [

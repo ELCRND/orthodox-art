@@ -7,7 +7,14 @@ export async function POST(req: Request) {
     const { db, reqBody } = await getDbAndReqBody(clientPromise, req);
     const { email, product } = reqBody;
 
-    await db.collection("basket").findOneAndUpdate(
+    if (!email || !product) {
+      return NextResponse.json(
+        { errorMessage: "Email and product are required" },
+        { status: 400 }
+      );
+    }
+
+    const result = await db.collection("basket").findOneAndUpdate(
       { email },
       {
         $push: {
@@ -19,8 +26,22 @@ export async function POST(req: Request) {
       }
     );
 
-    return NextResponse.json({ status: 201 });
+    if (!result) {
+      return NextResponse.json(
+        { errorMessage: "Failed to update basket" },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json(
+      { basket: result.value, status: 201 },
+      { status: 201 }
+    );
   } catch (error) {
-    throw new Error((error as Error).message);
+    console.error("Error in POST /api/basket/addOne:", error);
+    return NextResponse.json(
+      { errorMessage: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

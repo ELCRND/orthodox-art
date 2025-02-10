@@ -85,76 +85,6 @@
   background-color: rgba(30, 30, 30, 0.2);
 }
 
-.content form {
-  width: 100%;
-  display: grid;
-  gap: 20px;
-}
-
-.content form input {
-  width: 100%;
-  padding: 14px 20px;
-  border: 1px solid rgba(30, 30, 30, 0.2);
-  border-radius: 10px;
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 16px;
-  color: rgba(30, 30, 30, 1);
-  outline: none;
-}
-
-.content form input::placeholder {
-  color: rgba(30, 30, 30, 0.7);
-}
-
-.content form button[type="submit"] {
-  width: 100%;
-  height: 45px;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  background: #3792de;
-  font-weight: 400;
-  font-size: 18px;
-  color: #fff;
-  cursor: pointer;
-  transition: box-shadow 250ms ease;
-}
-
-.content form button[type="submit"]:hover {
-  box-shadow: 0 0 5px rgba(30, 30, 30, 0.7) inset;
-  color: #fff;
-}
-
-.content form button[type="submit"]:active {
-  box-shadow: none;
-}
-
-.content form button {
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  border: none;
-  background-color: transparent;
-  font-family: var(--font-family);
-  font-weight: 400;
-  font-size: 14px;
-  text-align: center;
-  color: rgba(30, 30, 30, 0.7);
-  cursor: pointer;
-  transition: color 250ms ease;
-}
-
-.content form button:hover {
-  color: rgba(30, 30, 30, 1);
-}
-
-.content form button:active {
-  color: rgba(30, 30, 30, 0.7);
-}
-
 .container p {
   font-size: 16px;
   text-align: center;
@@ -167,12 +97,6 @@
   cursor: pointer;
   border: none;
   background-color: transparent;
-}
-
-.passwordError {
-  font-size: 16px;
-  color: brown;
-  text-align: center;
 }
 
 @media screen and (max-width: 439px) {

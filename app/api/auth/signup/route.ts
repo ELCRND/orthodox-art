@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import {
   clientPromise,
-  createUserAndGenerateTokens,
+  createUser,
   findUserByEmail,
   getDbAndReqBody,
 } from "@/utils/apiRoutes";
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     if (user) {
       return NextResponse.json(
         {
-          warningMessage: "Пользователь уже существует",
+          errorMessage: "Пользователь уже существует",
         },
         {
           status: 400,
@@ -23,10 +23,16 @@ export async function POST(req: Request) {
       );
     }
 
-    const tokens = await createUserAndGenerateTokens(db, reqBody);
+    const createdUser = await createUser(db, reqBody);
 
-    return NextResponse.json(tokens, { status: 201 });
+    if (!createdUser) throw new Error();
+
+    return NextResponse.json({ status: 201 });
   } catch (error) {
-    throw new Error((error as Error).message);
+    console.error("Error in POST /api/auth/signup:", error);
+    return NextResponse.json(
+      { errorMessage: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

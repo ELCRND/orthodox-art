@@ -3,8 +3,9 @@ import GuaranteeIcon from "./GuaranteeIcon";
 import HandmadeIcon from "./HandmadeIcon";
 import UniquenessIcon from "./UniquenessIcon";
 
-import styles from "./icons.module.css";
 import { useSliderIndicators } from "@/app/hooks/useSliderIndicators";
+
+import styles from "./icons.module.css";
 
 const Icons = () => {
   const { indicatorNum, ref } = useSliderIndicators();

@@ -10,6 +10,14 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   const { db, reqBody } = await getDbAndReqBody(clientPromise, req);
+
+  if (!reqBody.email) {
+    return NextResponse.json(
+      { errorMessage: "Email are required" },
+      { status: 400 }
+    );
+  }
+
   const user = await findUserByEmail(db, reqBody.email);
 
   if (!user) {

@@ -1,7 +1,7 @@
 "use client";
-// @ts-expect-error: Let's ignore a compile error like this unreachable code
-import { useSession } from "next-auth/react";
 import { useEffect } from "react";
+//@ts-expect-error Next.js does not yet correctly use the `package.json#exports` field
+import { useSession } from "next-auth/react";
 import { useBasketStore } from "../store/index";
 
 const BasketLayout = ({
@@ -9,7 +9,7 @@ const BasketLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const { setBasket, setBaskedIsLoading } = useBasketStore();
+  const { setBasket, setBaskedIsLoading, setFromDb } = useBasketStore();
 
   const session = useSession();
   useEffect(() => {
@@ -26,12 +26,14 @@ const BasketLayout = ({
         })
         .then((data) => {
           setBasket(data);
+          setFromDb(true);
         })
         .finally(() => setBaskedIsLoading(false));
     } else if (localStorage.getItem("basket")) {
       setBasket(JSON.parse(localStorage.getItem("basket")!));
+      setFromDb(false);
     }
-  }, [session.data?.user?.email, setBaskedIsLoading, setBasket]);
+  }, [session.data?.user?.email, setBaskedIsLoading, setBasket, setFromDb]);
 
   return <>{children}</>;
 };

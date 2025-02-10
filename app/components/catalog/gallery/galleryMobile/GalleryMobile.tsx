@@ -1,6 +1,8 @@
 import Image from "next/image";
-import { useSliderIndicators } from "@/app/hooks/useSliderIndicators";
+
 import { GalleryProps } from "../Gallery";
+
+import { useSliderIndicators } from "@/app/hooks/useSliderIndicators";
 
 import styles from "./galleryMobile.module.css";
 

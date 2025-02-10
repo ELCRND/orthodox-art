@@ -1,12 +1,14 @@
 "use client";
 import { useState } from "react";
-// @ts-expect-error: Let's ignore a compile error like this unreachable code
+//@ts-expect-error Next.js does not yet correctly use the `package.json#exports` field
 import { useSession } from "next-auth/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { useBasketStore } from "@/app/store/index";
+
 import ProductCard from "./productCard/ProductCard";
 import OrderModal from "./orderModal/OrderModal";
+
+import { useBasketStore } from "@/app/store/index";
 
 import styles from "./basket.module.css";
 
@@ -15,8 +17,10 @@ type Inputs = { [key: string]: string };
 const Basket = () => {
   const [open, setOpen] = useState(false);
 
-  const { basket, setBasket, setBaskedIsLoading, getTotal } = useBasketStore();
+  const { basket, setBasket, setBaskedIsLoading, getTotal, getCount } =
+    useBasketStore();
   const { data } = useSession();
+
   const { register, handleSubmit } = useForm<Inputs>({ mode: "onSubmit" });
 
   const onSubmit: SubmitHandler<Inputs> = () => {
@@ -46,7 +50,9 @@ const Basket = () => {
       <div className={styles.total}>
         <span>Итого: </span>
         <b>{getTotal().toLocaleString()}</b>
-        <button form="basketForm">оформить заказ</button>
+        <button form="basketForm" disabled={getCount() === 0}>
+          оформить заказ
+        </button>
       </div>
 
       <form

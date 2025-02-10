@@ -37,6 +37,10 @@
   color: #999;
 }
 
+.submit {
+  display: contents;
+}
+
 @media screen and (max-width: 1279px) {
   .container {
     padding: 20px;

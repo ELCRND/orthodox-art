@@ -5,7 +5,7 @@ import styles from "./feedback.module.css";
 
 const Feedback = () => {
   const notify = (m: string) =>
-    toast(`Success ${m.replace(/[^\d]/g, "")}`, {
+    toast.success(`Success ${m.replace(/[^\d]/g, "")}`, {
       position: "top-center",
       autoClose: 3000,
       hideProgressBar: false,
@@ -16,6 +16,7 @@ const Feedback = () => {
       theme: "dark",
       transition: Zoom,
     });
+
   return (
     <div className={styles.container}>
       <h2>Вам все нравится, но остались сомнения?</h2>

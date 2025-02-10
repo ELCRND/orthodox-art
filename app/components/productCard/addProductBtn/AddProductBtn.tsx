@@ -1,4 +1,4 @@
-// @ts-expect-error: Let's ignore a compile error like this unreachable code
+//@ts-expect-error Next.js does not yet correctly use the `package.json#exports` field
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
 import { useBasketStore, useProductToBasketStore } from "@/app/store/index";

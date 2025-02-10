@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+
 import Icons from "../../icons/Icons";
 
 import styles from "./aboutMaster.module.css";

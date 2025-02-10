@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import styles from "./aboutImage.module.css";
 
 const AboutImage = ({ src, alt }: { src: string; alt: string }) => {

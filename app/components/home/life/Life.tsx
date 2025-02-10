@@ -1,13 +1,14 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { useSlider } from "@/app/hooks/useSlider";
+
 import Video from "./video/Video";
+
+import { useSlider } from "@/app/hooks/useSlider";
 
 import styles from "./life.module.css";
 
 const Life = () => {
-  // const [isAutoPlay,setIsAutoPlay] =  useState(false)
   const [isWindowWide, setIsWindowWide] = useState<boolean | null>(true);
   const { slideIdex, toPrev, toNext, setSlideIndex, toggleAutoSlide } =
     useSlider(6, isWindowWide ? 5000 : 0, 5000);
@@ -63,6 +64,7 @@ const Life = () => {
           />
           <span>Life</span>
         </h2>
+
         <div className={styles.navigation}>
           <button
             type="button"
@@ -72,6 +74,7 @@ const Life = () => {
           <button type="button" onClick={toNext} disabled={isLast}></button>
         </div>
       </div>
+
       <div className={styles.slider}>
         <ol
           ref={ref}
@@ -128,6 +131,7 @@ const Life = () => {
           </li>
         </ol>
       </div>
+
       <div className={styles.pagination}>
         {[0, 0, 0, 0, 0, 0].map((_, idx) => (
           <button

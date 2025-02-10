@@ -1,40 +1,38 @@
 "use client";
 import { useEffect } from "react";
+
 import Accordion from "./accordion/Accordion";
 import Gallery from "./gallery/Gallery";
 import Tabs from "./tabs/Tabs";
 import AddProductBtn from "./addProductBtn/AddProductBtn";
-import { useProductToBasketStore } from "@/app/store/index";
+
+import { useBasketStore, useProductToBasketStore } from "@/app/store/index";
 import { IBasket, IProduct } from "@/types/index";
 
 import styles from "./productCard.module.css";
 
-const ProductCard = ({
-  product,
-  basketFromDB,
-}: {
-  product: IProduct;
-  basketFromDB: IBasket[];
-}) => {
+const ProductCard = ({ product }: { product: IProduct }) => {
   const { productCount, setProductCount, setProductSize } =
     useProductToBasketStore();
+
+  const { getById, fromDb } = useBasketStore();
 
   const handleCount = (v: number) => {
     setProductCount(productCount + v);
   };
 
   useEffect(() => {
-    if (basketFromDB) {
-      const productFromDB = basketFromDB?.find((el) => el._id === product._id);
-      setProductCount(productFromDB?.count || 1);
-      setProductSize(productFromDB?.currentSize || "");
+    if (fromDb) {
+      const productFromBasket = getById(product._id);
+      setProductCount(productFromBasket?.count || 1);
+      setProductSize(productFromBasket?.currentSize || "");
     } else {
       const ls = JSON.parse(localStorage.getItem("basket")!) || [];
       const productFromLS = ls.find((el: IBasket) => el._id === product._id);
       setProductCount(productFromLS?.count || 1);
-      setProductSize(productFromLS?.currentSize || null);
+      setProductSize(productFromLS?.currentSize || "");
     }
-  }, [basketFromDB, product._id, setProductCount, setProductSize]);
+  }, [product._id, fromDb, getById, setProductCount, setProductSize]);
 
   return (
     <div className={styles.container}>

@@ -25,24 +25,29 @@ const Contacts = () => {
     <div className={styles.container} id="contacts">
       <div className={styles.text}>
         <h2>Контакты</h2>
+
         <div className={styles.wrapper}>
           <div className={styles.phone}>
             <h3>Телефон</h3>
             <b>+7 (999) 808 65 48</b>
           </div>
+
           <div className={styles.email}>
             <h3>Электронный адрес</h3>
             <b>example@gmail.com</b>
           </div>
         </div>
+
         <div className={styles.address}>
           <h3>Адрес</h3>
           <b>Москва ул.Академика Королева 13 стр 1 подъезд 5 офис 960</b>
         </div>
+
         <div className={styles.workingHours}>
           <h3>Время работы</h3>
           <b>пн-пт: с 10:00 до 19:00 ч.</b>
         </div>
+
         <div className={styles.faq}>
           {data.map((el) => (
             <Accordion

@@ -17,9 +17,11 @@ const Description = ({ data }: Props) => {
   return (
     <div className={styles.container}>
       <h2>{data.title}</h2>
+
       {data.desc.map((d, i) => (
         <p key={i}>{d}</p>
       ))}
+
       <Link href={data.link.path}>{data.link.text}</Link>
     </div>
   );

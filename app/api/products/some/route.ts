@@ -8,30 +8,48 @@ import {
 export const revalidate = 0;
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  // console.log(searchParams);
-  const available = searchParams.get("available") === "order" ? false : true;
-  const category = searchParams.get("category") || "";
-  const material = searchParams.get("material");
-  const start = parseInt(searchParams.get("start") || "0", 10);
-  const end = parseInt(searchParams.get("end") || "11", 10);
+  try {
+    const { searchParams } = new URL(request.url);
 
-  const filters = new Map();
+    const available = searchParams.get("available") !== "order";
+    const category = searchParams.get("category") || "";
+    const material = searchParams.get("material") || "";
+    const start = parseInt(searchParams.get("start") || "0", 10);
+    const end = parseInt(searchParams.get("end") || "11", 10);
 
-  filters.set("stock", available);
-  if (category && category !== "all") filters.set("type", category);
-  if (material && material !== "any") filters.set("material", material);
+    if (isNaN(start) || isNaN(end) || start < 0 || end < 0 || start > end) {
+      return NextResponse.json(
+        { errorMessage: "Invalid start or end parameters" },
+        { status: 400 }
+      );
+    }
 
-  const { db } = await getDbAndReqBody(clientPromise, null);
+    const filters: {
+      stock: boolean;
+      type?: string;
+      material?: string;
+    } = {
+      stock: available,
+    };
 
-  const res = await getSomeProducts(
-    db,
-    start,
-    end,
-    Object.fromEntries(filters.entries())
-  );
+    if (category && category !== "all") filters.type = category;
+    if (material && material !== "any") filters.material = material;
 
-  return res.length
-    ? NextResponse.json(res)
-    : NextResponse.json(res, { statusText: "finished" });
+    const { db } = await getDbAndReqBody(clientPromise, null);
+
+    const products = await getSomeProducts(db, start, end, filters);
+
+    if (!products.length) {
+      return NextResponse.json({ statusText: "finished" }, { status: 200 });
+    }
+
+    return NextResponse.json(products, { status: 200 });
+  } catch (error) {
+    console.error("Error in GET /api/products.some:", error);
+
+    return NextResponse.json(
+      { errorMessage: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
 }

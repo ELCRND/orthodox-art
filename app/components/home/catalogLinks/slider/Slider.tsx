@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+
 import { useSlider } from "@/app/hooks/useSlider";
 
 import styles from "./slider.module.css";
@@ -40,6 +41,7 @@ const Slider = () => {
           />
         </li>
       </ul>
+
       <div className={styles.indacators}>
         {[0, 0, 0].map((_, idx) => (
           <button

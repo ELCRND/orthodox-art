@@ -1,5 +1,5 @@
 import { authConfig } from "./authconfig";
-// @ts-expect-error: Let's ignore a compile error like this unreachable code
+//@ts-expect-error Next.js does not yet correctly use the `package.json#exports` field
 import NextAuth from "next-auth";
 
 export default NextAuth(authConfig).auth;
