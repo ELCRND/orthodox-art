@@ -6,7 +6,7 @@ import { signOut, useSession } from "next-auth/react";
 import styles from "./icons.module.css";
 
 type Props = {
-  handler: () => void;
+  handler?: () => void;
 };
 
 const ProfileLink = ({ handler }: Props) => {

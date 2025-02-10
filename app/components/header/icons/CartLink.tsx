@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./icons.module.css";
 
 type Props = {
-  handler: () => void;
+  handler?: () => void;
 };
 
 const CartLink = ({ handler }: Props) => {
