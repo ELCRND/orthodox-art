@@ -1,3 +1,4 @@
+import { IProduct } from "@/types";
 import { toast, Zoom } from "react-toastify";
 
 export const loadMoreProducts = async (
@@ -27,7 +28,6 @@ export const loadMoreProducts = async (
 
       return "finished";
     }
-    // const newProducts: IProduct[] = await updateData.json();
 
     return res;
   } catch (error) {

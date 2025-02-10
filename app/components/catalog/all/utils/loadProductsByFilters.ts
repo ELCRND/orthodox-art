@@ -4,9 +4,12 @@ export const loadProductsByFilters = async (filters: string) => {
       `/api/products/some?start=${0}&end=${5}&${filters.toString()}`
     );
 
-    const newProducts = await newData.json();
+    const res = await newData.json();
+    if (res.statusText === "finished") {
+      return [];
+    }
 
-    return newProducts;
+    return res;
   } catch (error) {
     console.log(error);
   }
