@@ -16,12 +16,10 @@ type Inputs = { [key: string]: string };
 
 const Basket = () => {
   const [open, setOpen] = useState(false);
-
+  const { data } = useSession();
+  const { register, handleSubmit } = useForm<Inputs>({ mode: "onSubmit" });
   const { basket, setBasket, setBaskedIsLoading, getTotal, getCount } =
     useBasketStore();
-  const { data } = useSession();
-
-  const { register, handleSubmit } = useForm<Inputs>({ mode: "onSubmit" });
 
   const onSubmit: SubmitHandler<Inputs> = () => {
     setOpen(true);
@@ -41,6 +39,18 @@ const Basket = () => {
     setBasket(basket.filter((p) => p._id !== id));
     toast(`Продукт удален из корзины ${data?.user?.email}`);
     setBaskedIsLoading(false);
+  };
+
+  const deleteOneFromLs = (id: string) => {
+    const newData = basket.filter((p) => p._id !== id);
+    localStorage.setItem("basket", JSON.stringify(newData));
+    setBasket(newData);
+    toast(`Продукт удален из корзины гостя`);
+  };
+
+  const handleDeleteFromBasket = () => {
+    if (data?.user?.email) return deleteOneFromDb;
+    return deleteOneFromLs;
   };
 
   return (
@@ -65,7 +75,7 @@ const Basket = () => {
             <ProductCard
               key={product._id}
               product={product}
-              deleteOneFromDb={deleteOneFromDb}
+              deleteOne={handleDeleteFromBasket}
               register={register}
             />
           ))}

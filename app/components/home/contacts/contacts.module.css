@@ -116,6 +116,7 @@
   .map {
     grid-column: 1 / 2;
     align-self: flex-start;
+    filter: grayscale(0);
   }
 }
 

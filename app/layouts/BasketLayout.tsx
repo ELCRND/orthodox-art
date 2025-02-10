@@ -10,8 +10,8 @@ const BasketLayout = ({
   children: React.ReactNode;
 }>) => {
   const { setBasket, setBaskedIsLoading, setFromDb } = useBasketStore();
-
   const session = useSession();
+
   useEffect(() => {
     if (session.data?.user?.email) {
       fetch(`/api/basket`, {

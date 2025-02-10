@@ -10,11 +10,11 @@ import styles from "./productCard.module.css";
 
 type Props = {
   product: IBasket;
-  deleteOneFromDb: (id: string) => Promise<void>;
+  deleteOne: () => (id: string) => void;
   register: UseFormRegister<FieldValues>;
 };
 
-const ProductCard = ({ product, deleteOneFromDb, register }: Props) => {
+const ProductCard = ({ product, deleteOne, register }: Props) => {
   const { basket, setBasket } = useBasketStore();
   const changeCount = (v: number) =>
     setBasket(
@@ -67,7 +67,7 @@ const ProductCard = ({ product, deleteOneFromDb, register }: Props) => {
       </div>
 
       <button
-        onClick={() => deleteOneFromDb(product._id)}
+        onClick={() => deleteOne()(product._id)}
         className={styles.delete}
         type="button"
       ></button>
