@@ -9,8 +9,9 @@ export default nextConfig;
 const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline'  https://api-maps.yandex.ru https://yastatic.net;
+    script-src-elem 'self' 'unsafe-inline' https://api-maps.yandex.ru https://yastatic.net;
     style-src 'self' 'unsafe-inline';
-    img-src 'self' blob: data:;
+    img-src 'self' blob: data: https://api-maps.yandex.ru https://yastatic.net;
     font-src 'self' https://mc.yandex.ru https://yastatic.net;
     frame-src 'self' https://yandex.ru;
     object-src 'none';
