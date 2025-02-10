@@ -27,7 +27,7 @@ export async function POST(req: Request) {
 
     if (!createdUser) throw new Error();
 
-    return NextResponse.json({ status: 201 });
+    return NextResponse.json(null, { status: 201 });
   } catch (error) {
     console.error("Error in POST /api/auth/signup:", error);
     return NextResponse.json(

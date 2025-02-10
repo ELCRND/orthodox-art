@@ -15,9 +15,9 @@ export const handleSignUp = async (data: {
     });
 
     if (res.status === 400) {
-      toast((await res.json()).errorMessage);
+      toast.error((await res.json()).errorMessage);
     } else if (res.status === 201) {
-      toast("Пользователь успешно создан");
+      toast.success("Пользователь успешно создан");
     }
   } catch (error) {
     toast.error("Произошла ошибка при регистрации");
