@@ -1,4 +1,3 @@
-import { IProduct } from "@/types";
 import { toast, Zoom } from "react-toastify";
 
 export const loadMoreProducts = async (
